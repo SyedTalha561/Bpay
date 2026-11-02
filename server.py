@@ -159,7 +159,7 @@ class BPayHandler(http.server.SimpleHTTPRequestHandler):
                 fee = round((target['amount'] * 0.039) + 0.30, 2)
                 tip = round((target['amount'] * tip_pct) / 100.0, 2)
                 total_paid = round(target['amount'] + fee + tip, 2)
-                miles_earned = round(total_paid * 3)
+                miles_earned = round(total_paid * 1.25)
 
                 GLOBAL_STATS['totalCleared'] += target['amount']
                 GLOBAL_STATS['burdensLifted'] += 1

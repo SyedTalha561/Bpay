@@ -135,64 +135,64 @@
 
   <!-- NAVIGATION BAR -->
   <header class="sticky top-0 z-40 w-full light-glass border-b border-slate-200 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between gap-3">
       
       <!-- Brand Logo -->
-      <div class="flex items-center gap-3 cursor-pointer" onclick="scrollToTop()">
-        <div class="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-white shadow-sm">
+      <div class="flex items-center gap-2.5 cursor-pointer flex-shrink-0" onclick="scrollToTop()">
+        <div class="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-white shadow-sm flex-shrink-0">
           <span class="font-serif italic font-bold text-2xl text-amber-400">B</span>
         </div>
         <div>
           <div class="flex items-center gap-2">
             <span class="font-extrabold tracking-tight text-xl text-slate-900 font-sans">BPAY</span>
-            <span class="text-[10px] uppercase font-mono tracking-wider px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300 font-bold">Global Angel Clearinghouse</span>
+            <span class="text-[10px] uppercase font-mono tracking-wider px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300 font-bold whitespace-nowrap">Global Angel Clearinghouse</span>
           </div>
-          <p class="text-[11px] text-slate-500 font-mono">0% Recipient Fees • 100% Direct Impact • Elite Points</p>
+          <p class="text-[11px] text-slate-500 font-mono hidden md:block whitespace-nowrap">0% Recipient Fees • 100% Direct Impact • Elite Points</p>
         </div>
       </div>
 
-      <!-- Live Global Ticker (Desktop) -->
-      <div class="hidden lg:flex items-center gap-5 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm text-xs font-mono text-slate-600">
-        <div class="flex items-center gap-2">
+      <!-- Live Global Ticker (Shown only on extra-large screens to prevent crowding) -->
+      <div class="hidden 2xl:flex items-center gap-3 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm text-xs font-mono text-slate-600 whitespace-nowrap flex-shrink-0">
+        <div class="flex items-center gap-1.5">
           <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span class="text-slate-500">Cleared Worldwide:</span>
-          <span class="text-slate-900 font-bold" id="global-cleared-amount">$5,412,890</span>
+          <span class="text-slate-500">Cleared:</span>
+          <span class="text-slate-900 font-bold" id="global-cleared-amount">$5,415,730</span>
         </div>
         <span class="text-slate-300">|</span>
         <div>
-          <span class="text-slate-500">Burdens Lifted:</span>
-          <span class="text-amber-700 font-bold" id="global-burdens-count">1,489</span>
+          <span class="text-slate-500">Burdens:</span>
+          <span class="text-amber-700 font-bold" id="global-burdens-count">1,490</span>
         </div>
         <span class="text-slate-300">|</span>
-        <div class="flex items-center gap-1.5 text-blue-700 font-semibold">
+        <div class="flex items-center gap-1 text-blue-700 font-semibold">
           <i data-lucide="plane-takeoff" class="w-3.5 h-3.5"></i>
-          <span>Emirates & KrisFlyer Multiplier Active</span>
+          <span>Emirates & KrisFlyer Active</span>
         </div>
       </div>
 
       <!-- Action Navigation & Account State -->
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
         
         <!-- Institution Onboarding Link -->
-        <button onclick="openInstitutionModal()" class="hidden md:flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition">
+        <button onclick="openInstitutionModal()" class="hidden xl:flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition whitespace-nowrap flex-shrink-0">
           <i data-lucide="building-2" class="w-4 h-4 text-slate-500"></i>
-          <span>Global Institutions & Leases</span>
+          <span>Global Directory</span>
         </button>
 
         <!-- Recipient "Submit Need" Button -->
-        <button onclick="openRecipientNeedModal()" class="px-3.5 py-2 rounded-lg text-xs font-bold text-slate-800 bg-white border border-slate-300 hover:border-slate-400 hover:bg-slate-50 shadow-sm transition flex items-center gap-1.5">
+        <button onclick="openRecipientNeedModal()" class="px-3 py-2 rounded-lg text-xs font-bold text-slate-800 bg-white border border-slate-300 hover:border-slate-400 hover:bg-slate-50 shadow-sm transition flex items-center gap-1.5 whitespace-nowrap flex-shrink-0">
           <i data-lucide="plus-circle" class="w-3.5 h-3.5 text-slate-600"></i>
           <span>Submit a Need</span>
         </button>
 
         <!-- Patron Guild Founders Special Rate ($299/mo offer on $499/mo) -->
-        <button onclick="openPatronGuildModal()" class="hidden sm:flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-bold bg-amber-500 hover:bg-amber-600 text-white shadow-sm transition">
+        <button onclick="openPatronGuildModal()" class="hidden md:flex items-center gap-1 px-3 py-2 rounded-lg text-xs font-bold bg-amber-500 hover:bg-amber-600 text-white shadow-sm transition whitespace-nowrap flex-shrink-0">
           <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-200"></i>
-          <span>Patron Guild <span class="bg-amber-700/80 px-1.5 py-0.5 rounded text-[10px] ml-1">$299/mo</span></span>
+          <span>Patron Guild <span class="bg-amber-700/80 px-1 py-0.5 rounded text-[10px] ml-1">$299/mo</span></span>
         </button>
 
         <!-- User Account Bar / Login State -->
-        <div id="auth-nav-container">
+        <div id="auth-nav-container" class="flex-shrink-0">
           <!-- Injected via JavaScript based on login state -->
         </div>
 
@@ -448,27 +448,27 @@
           <div class="space-y-1 max-w-md">
             <div class="text-amber-400 font-mono text-xs uppercase font-bold flex items-center gap-1.5">
               <i data-lucide="calculator" class="w-4 h-4"></i>
-              <span>Live Patron Rewards Calculator</span>
+              <span>High-Net-Worth Patron Rewards Calculator</span>
             </div>
-            <h4 class="text-lg font-bold">How many miles will your clearance earn?</h4>
-            <p class="text-xs text-slate-300">Select your monthly clearing target to see estimated first-class airline miles.</p>
+            <h4 class="text-lg font-bold">How many miles will your philanthropic clearance earn?</h4>
+            <p class="text-xs text-slate-300">Calibrated for genuine high-tier card spend (1x base up to 2x Sovereign Tier).</p>
           </div>
 
           <div class="flex items-center gap-4 w-full md:w-auto">
             <div class="space-y-1">
-              <label class="text-[10px] font-mono text-slate-400">Clearing Amount:</label>
+              <label class="text-[10px] font-mono text-slate-400">Monthly Clearance Target:</label>
               <select id="calc-amount" onchange="calculateAirlineMiles()" class="bg-slate-800 border border-slate-700 rounded-xl px-4 py-2 text-xs font-bold text-white focus:outline-none">
-                <option value="2500">$2,500 / month</option>
-                <option value="5000" selected>$5,000 / month</option>
-                <option value="15000">$15,000 / month</option>
-                <option value="50000">$50,000 / month</option>
+                <option value="15000" selected>$15,000 / mo ($180k/yr)</option>
+                <option value="30000">$30,000 / mo ($360k/yr)</option>
+                <option value="75000">$75,000 / mo ($900k/yr)</option>
+                <option value="150000">$150,000 / mo ($1.8M/yr)</option>
               </select>
             </div>
 
-            <div class="p-3 bg-slate-800 rounded-xl border border-slate-700 text-center min-w-[170px]">
+            <div class="p-3 bg-slate-800 rounded-xl border border-slate-700 text-center min-w-[210px]">
               <div class="text-[10px] font-mono text-slate-400">Estimated Annual Miles:</div>
               <div class="text-xl font-bold font-mono text-amber-400" id="calc-miles-output">180,000 Miles</div>
-              <div class="text-[10px] text-emerald-400 font-mono">Emirates First Class Ready ✈</div>
+              <div class="text-[10px] text-emerald-400 font-mono" id="calc-miles-tier">1 Round-Trip Business Class Flight ✈</div>
             </div>
           </div>
         </div>
@@ -1261,31 +1261,36 @@
       const container = document.getElementById('auth-nav-container');
       if (currentUser.isLoggedIn) {
         if (currentUser.role === 'patron') {
+          const milesShort = (currentUser.totalMilesEarned >= 1000) 
+            ? `${(currentUser.totalMilesEarned / 1000).toFixed(1)}k` 
+            : currentUser.totalMilesEarned;
+          const airlineShort = currentUser.airlineName.split(' ')[0];
+
           container.innerHTML = `
-            <div class="flex items-center gap-2 bg-white border border-slate-200 px-3 py-1.5 rounded-xl shadow-sm text-xs">
-              <div class="w-6 h-6 rounded-full bg-slate-900 text-amber-400 font-bold flex items-center justify-center text-[11px]">
+            <div class="flex items-center gap-2 bg-white border border-slate-200 px-2.5 py-1.5 rounded-xl shadow-sm text-xs whitespace-nowrap flex-shrink-0">
+              <div class="w-7 h-7 rounded-full bg-slate-900 text-amber-400 font-bold flex items-center justify-center text-xs flex-shrink-0">
                 ${currentUser.name.charAt(0)}
               </div>
-              <div class="hidden sm:block text-left">
-                <div class="font-bold text-slate-900 leading-tight">${currentUser.name}</div>
-                <div class="text-[10px] text-blue-700 font-mono font-semibold">${currentUser.totalMilesEarned.toLocaleString()} ${currentUser.airlineName} Miles</div>
+              <div class="hidden sm:block text-left leading-tight">
+                <div class="font-bold text-slate-900 text-xs">${currentUser.name}</div>
+                <div class="text-[10px] text-blue-700 font-mono font-semibold">${milesShort} ${airlineShort} Miles</div>
               </div>
-              <button onclick="toggleUserRole()" title="Switch Account Role" class="text-slate-400 hover:text-slate-800 ml-1">
+              <button onclick="toggleUserRole()" title="Switch Account Role" class="text-slate-400 hover:text-slate-800 p-0.5 rounded hover:bg-slate-100 transition flex-shrink-0">
                 <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
               </button>
             </div>
           `;
         } else {
           container.innerHTML = `
-            <div class="flex items-center gap-2 bg-white border border-slate-200 px-3 py-1.5 rounded-xl shadow-sm text-xs">
-              <div class="w-6 h-6 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-[11px]">
+            <div class="flex items-center gap-2 bg-white border border-slate-200 px-2.5 py-1.5 rounded-xl shadow-sm text-xs whitespace-nowrap flex-shrink-0">
+              <div class="w-7 h-7 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-xs flex-shrink-0">
                 ${currentUser.name.charAt(0)}
               </div>
-              <div class="hidden sm:block text-left">
-                <div class="font-bold text-slate-900 leading-tight">${currentUser.name}</div>
-                <div class="text-[10px] text-emerald-700 font-mono font-semibold">Verified Recipient (0% Fees)</div>
+              <div class="hidden sm:block text-left leading-tight">
+                <div class="font-bold text-slate-900 text-xs">${currentUser.name}</div>
+                <div class="text-[10px] text-emerald-700 font-mono font-semibold">Verified (0% Fees)</div>
               </div>
-              <button onclick="toggleUserRole()" title="Switch Account Role" class="text-slate-400 hover:text-slate-800 ml-1">
+              <button onclick="toggleUserRole()" title="Switch Account Role" class="text-slate-400 hover:text-slate-800 p-0.5 rounded hover:bg-slate-100 transition flex-shrink-0">
                 <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
               </button>
             </div>
@@ -1293,8 +1298,8 @@
         }
       } else {
         container.innerHTML = `
-          <button onclick="openAuthModal()" class="px-4 py-2 rounded-lg text-xs font-bold bg-slate-900 text-white hover:bg-slate-800 transition">
-            Sign In / Register
+          <button onclick="openAuthModal()" class="px-3.5 py-2 rounded-lg text-xs font-bold bg-slate-900 text-white hover:bg-slate-800 transition whitespace-nowrap flex-shrink-0">
+            Sign In
           </button>
         `;
       }
@@ -1376,7 +1381,7 @@
         // Calculate fee added for patron
         const withdrawalFee = calculateWithdrawalFee(item.amount);
         const totalWithFee = item.amount + withdrawalFee;
-        const miles = Math.round(totalWithFee * 3);
+        const miles = Math.round(totalWithFee * 1.25);
 
         return `
           <div class="bg-white rounded-3xl p-6 border border-slate-200 hover:border-slate-400 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
@@ -1490,7 +1495,7 @@
       const item = active[currentZenIndex];
       const fee = calculateWithdrawalFee(item.amount);
       const total = item.amount + fee;
-      const miles = Math.round(total * 3);
+      const miles = Math.round(total * 1.25);
 
       container.innerHTML = `
         <div class="bg-white rounded-3xl p-8 border border-slate-300 shadow-luxury space-y-5">
@@ -1628,7 +1633,7 @@
       const withdrawalFee = calculateWithdrawalFee(base);
       const tipAmount = (base * selectedTipPercent) / 100;
       const total = base + withdrawalFee + tipAmount;
-      const miles = Math.round(total * 3);
+      const miles = Math.round(total * 1.25);
 
       document.getElementById('modal-fee-amount').innerText = `+$${withdrawalFee.toFixed(2)}`;
       document.getElementById('modal-tip-display').innerText = `+$${tipAmount.toFixed(2)} (${selectedTipPercent}%)`;
@@ -1646,7 +1651,7 @@
       totalClearedAmount += currentSelectedNeed.amount;
       totalBurdensCount += 1;
 
-      const milesEarned = Math.round((currentSelectedNeed.amount + calculateWithdrawalFee(currentSelectedNeed.amount)) * 3);
+      const milesEarned = Math.round((currentSelectedNeed.amount + calculateWithdrawalFee(currentSelectedNeed.amount)) * 1.25);
       currentUser.totalMilesEarned += milesEarned;
 
       document.getElementById('global-cleared-amount').innerText = `$${totalClearedAmount.toLocaleString()}`;
@@ -1868,12 +1873,34 @@ Settlement Channel: Direct Electronic Clearing (0% Cash Diversion)
       closeInstitutionModal();
     }
 
-    // AIRLINE MILES CALCULATOR
+    // AIRLINE MILES CALCULATOR (CALIBRATED REALISTIC BILLIONAIRE RATIOS)
     function calculateAirlineMiles() {
-      const amount = parseFloat(document.getElementById('calc-amount').value) || 5000;
+      const amount = parseFloat(document.getElementById('calc-amount').value) || 15000;
       const annualClearance = amount * 12;
-      const miles = annualClearance * 3;
+      
+      // Calibrated loyalty tiers:
+      // $15,000/mo ($180k/yr) -> 1.0x = 180,000 Miles (1 Round-Trip Business Class)
+      // $30,000/mo ($360k/yr) -> 1.25x = 450,000 Miles (1 First Class Suite + Silver Tier)
+      // $75,000/mo ($900k/yr) -> 1.5x = 1,350,000 Miles (Multiple First Class Suites + Gold Tier)
+      // $150,000/mo ($1.8M/yr) -> 2.0x = 3,600,000 Miles (Unlimited First Class + Emirates Platinum / Solitaire PPS)
+      let multiplier = 1.0;
+      let tierDesc = "1 Round-Trip Business Class Flight ✈";
+
+      if (amount >= 150000) {
+        multiplier = 2.0;
+        tierDesc = "Unlimited First Class Travel + Emirates Platinum 👑";
+      } else if (amount >= 75000) {
+        multiplier = 1.5;
+        tierDesc = "Annual Global First Class Suites + Solitaire PPS ✈";
+      } else if (amount >= 30000) {
+        multiplier = 1.25;
+        tierDesc = "1 Round-Trip First Class Suite + Silver Tier ✈";
+      }
+
+      const miles = Math.round(annualClearance * multiplier);
       document.getElementById('calc-miles-output').innerText = `${miles.toLocaleString()} Miles`;
+      const tierEl = document.getElementById('calc-miles-tier');
+      if (tierEl) tierEl.innerText = tierDesc;
     }
 
     function openAirlineMilesModal() {
