@@ -1,0 +1,21 @@
+{
+  "name": "bpay-platform",
+  "version": "1.0.0",
+  "description": "Sovereign Benefactor Network where ultra-high-net-worth individuals pay verified expenses happily.",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 server.py",
+    "dev": "python3 server.py"
+  },
+  "keywords": [
+    "fintech",
+    "philanthropy",
+    "apple-pay",
+    "google-pay",
+    "crypto",
+    "usdc",
+    "anti-fraud"
+  ],
+  "author": "BPAY Team",
+  "license": "MIT"
+}
