@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en" class="light scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BPAY | The Sovereign Benefactor Network</title>
-  <meta name="description" content="A minimalist philanthropic clearinghouse where verified benefactors pay real everyday expenses with radical transparency, joy, and zero friction.">
+  <meta name="description" content="A light minimalist philanthropic platform where verified benefactors clear everyday human needs happily, earn elite airline points, and eliminate debt with zero fees for recipients.">
   
   <!-- Modern Font Stack -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -20,7 +20,7 @@
   <!-- Canvas Confetti for Celebration Feedback -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 
-  <!-- Tailwind Config for Luxury Minimalist Theme -->
+  <!-- Tailwind Configuration for Warm Minimalist Light Luxury Theme -->
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -32,30 +32,40 @@
             mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
-            obsidian: {
-              950: '#07080B',
-              900: '#0C0E14',
-              850: '#11141D',
-              800: '#181D29',
-              700: '#242B3D',
+            slate: {
+              850: '#151F32',
+              900: '#0F172A',
+              950: '#020617',
+            },
+            parchment: {
+              50: '#FDFDFC',
+              100: '#F9F9F7',
+              200: '#F2F2EE',
+              300: '#E7E7E0',
             },
             gold: {
-              300: '#FDE68A',
-              400: '#FCD34D',
-              500: '#E5C07B',
-              600: '#D4AF37',
-              700: '#B8972E',
+              400: '#F59E0B',
+              500: '#D97706',
+              600: '#B45309',
+              700: '#92400E',
+            },
+            royal: {
+              600: '#2563EB',
+              700: '#1D4ED8',
+              800: '#1E40AF',
+              900: '#1E3A8A',
             },
             emerald: {
-              400: '#34D399',
               500: '#10B981',
               600: '#059669',
+              700: '#047857',
             }
           },
           boxShadow: {
-            'glow-gold': '0 0 40px -10px rgba(229, 192, 123, 0.25)',
-            'glow-emerald': '0 0 35px -8px rgba(16, 185, 129, 0.25)',
-            'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+            'card': '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05)',
+            'card-hover': '0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04)',
+            'luxury': '0 20px 40px -15px rgba(180, 83, 9, 0.12)',
+            'glass': '0 8px 30px rgba(0, 0, 0, 0.04)',
           }
         }
       }
@@ -63,579 +73,717 @@
   </script>
 
   <style>
-    /* Custom Luxury Polish & Glassmorphism */
+    /* Custom High-Contrast Typography & Light Glassmorphism */
     ::selection {
-      background: #E5C07B;
-      color: #07080B;
+      background: #FEF3C7;
+      color: #92400E;
     }
     
-    .glass-panel {
-      background: rgba(17, 20, 29, 0.7);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-    }
-    
-    .glass-panel-gold {
-      background: rgba(22, 26, 38, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(212, 175, 55, 0.22);
+    body {
+      background-color: #FAFAF8;
+      color: #0F172A;
     }
 
-    .subtle-grid {
-      background-size: 40px 40px;
+    .light-glass {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+    }
+
+    .light-glass-gold {
+      background: rgba(255, 253, 245, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .subtle-paper-grid {
+      background-size: 32px 32px;
       background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
     }
 
-    .radial-spotlight {
-      background: radial-gradient(circle at 50% 0%, rgba(229, 192, 123, 0.09) 0%, rgba(7, 8, 11, 0) 70%);
-    }
-
-    /* Scrollbar styling */
+    /* Scrollbars */
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: #07080B;
+      background: #F1F5F9;
     }
     ::-webkit-scrollbar-thumb {
-      background: #242B3D;
+      background: #CBD5E1;
       border-radius: 9999px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #D4AF37;
-    }
-
-    /* Pulse animation */
-    @keyframes pulse-slow {
-      0%, 100% { opacity: 0.2; transform: scale(1); }
-      50% { opacity: 0.35; transform: scale(1.05); }
-    }
-    .animate-pulse-slow {
-      animation: pulse-slow 8s infinite ease-in-out;
+      background: #94A3B8;
     }
   </style>
 </head>
 
-<body class="bg-obsidian-950 text-slate-100 min-h-screen font-sans antialiased selection:bg-gold-500 selection:text-obsidian-950 flex flex-col justify-between relative overflow-x-hidden">
+<body class="min-h-screen font-sans antialiased flex flex-col justify-between relative overflow-x-hidden text-slate-900 bg-[#FAFAF8]">
 
-  <!-- Ambient Luxury Glow Background -->
+  <!-- Ambient Light Pattern & Soft Glow Background -->
   <div class="fixed inset-0 pointer-events-none z-0">
-    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gold-600/10 rounded-full blur-[140px] animate-pulse-slow"></div>
-    <div class="absolute top-[600px] -right-40 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[150px]"></div>
-    <div class="absolute bottom-10 -left-40 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[150px]"></div>
-    <div class="absolute inset-0 subtle-grid opacity-80"></div>
+    <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[850px] h-[450px] bg-amber-200/25 rounded-full blur-[130px]"></div>
+    <div class="absolute top-[550px] -right-32 w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-[140px]"></div>
+    <div class="absolute bottom-20 -left-32 w-[500px] h-[500px] bg-emerald-100/35 rounded-full blur-[140px]"></div>
+    <div class="absolute inset-0 subtle-paper-grid opacity-75"></div>
   </div>
 
   <!-- NAVIGATION BAR -->
-  <header class="sticky top-0 z-40 w-full glass-panel border-b border-white/5 transition-all duration-300">
+  <header class="sticky top-0 z-40 w-full light-glass border-b border-slate-200 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
-      <!-- Logo & Brand Identity -->
+      <!-- Brand Logo -->
       <div class="flex items-center gap-3 cursor-pointer" onclick="scrollToTop()">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 via-gold-600 to-amber-700 flex items-center justify-center shadow-glow-gold">
-          <span class="font-serif italic font-bold text-obsidian-950 text-2xl tracking-tighter">B</span>
+        <div class="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-white shadow-sm">
+          <span class="font-serif italic font-bold text-2xl text-amber-400">B</span>
         </div>
         <div>
           <div class="flex items-center gap-2">
-            <span class="font-bold tracking-tight text-lg text-white font-sans">BPAY</span>
-            <span class="text-[10px] uppercase font-mono tracking-widest px-2 py-0.5 rounded-full bg-gold-500/10 text-gold-400 border border-gold-500/20 font-semibold">Sovereign Angel Network</span>
+            <span class="font-extrabold tracking-tight text-xl text-slate-900 font-sans">BPAY</span>
+            <span class="text-[10px] uppercase font-mono tracking-wider px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300 font-bold">Global Angel Clearinghouse</span>
           </div>
-          <p class="text-[11px] text-slate-400 font-mono tracking-tight">Direct Expense Clearance • 0% Friction</p>
+          <p class="text-[11px] text-slate-500 font-mono">0% Recipient Fees • 100% Direct Impact • Elite Points</p>
         </div>
       </div>
 
-      <!-- Live Global Ticker Preview (Desktop) -->
-      <div class="hidden lg:flex items-center gap-6 px-4 py-1.5 rounded-full bg-obsidian-900/80 border border-white/5 text-xs font-mono text-slate-300">
+      <!-- Live Global Ticker (Desktop) -->
+      <div class="hidden lg:flex items-center gap-5 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm text-xs font-mono text-slate-600">
         <div class="flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-          <span class="text-slate-400">Total Cleared:</span>
-          <span class="text-emerald-400 font-semibold" id="global-cleared-amount">$4,842,910</span>
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="text-slate-500">Cleared Worldwide:</span>
+          <span class="text-slate-900 font-bold" id="global-cleared-amount">$5,412,890</span>
         </div>
-        <span class="text-white/20">|</span>
+        <span class="text-slate-300">|</span>
         <div>
-          <span class="text-slate-400">Burdens Lifted:</span>
-          <span class="text-gold-400 font-semibold" id="global-burdens-count">1,248</span>
+          <span class="text-slate-500">Burdens Lifted:</span>
+          <span class="text-amber-700 font-bold" id="global-burdens-count">1,489</span>
         </div>
-        <span class="text-white/20">|</span>
-        <div class="flex items-center gap-1.5 text-slate-400">
-          <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i>
-          <span>Fraud Shield 100% Active</span>
+        <span class="text-slate-300">|</span>
+        <div class="flex items-center gap-1.5 text-blue-700 font-semibold">
+          <i data-lucide="plane-takeoff" class="w-3.5 h-3.5"></i>
+          <span>Emirates & KrisFlyer Multiplier Active</span>
         </div>
       </div>
 
-      <!-- Action Nav Buttons -->
+      <!-- Action Navigation & Account State -->
       <div class="flex items-center gap-3">
-        <!-- Verification Badges / Info Modal -->
-        <button onclick="openVerificationModal()" class="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">
-          <i data-lucide="shield-alert" class="w-4 h-4 text-gold-400"></i>
-          <span>Dual Verification</span>
+        
+        <!-- Institution Onboarding Link -->
+        <button onclick="openInstitutionModal()" class="hidden md:flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition">
+          <i data-lucide="building-2" class="w-4 h-4 text-slate-500"></i>
+          <span>Global Institutions & Leases</span>
         </button>
 
-        <!-- Recipient "Request Help" Button -->
-        <button onclick="openRecipientModal()" class="px-4 py-2 rounded-lg text-xs font-semibold text-slate-200 border border-white/10 hover:border-gold-500/40 hover:bg-gold-500/5 transition flex items-center gap-1.5">
-          <i data-lucide="file-plus" class="w-3.5 h-3.5 text-slate-400"></i>
-          <span>Submit Expense</span>
+        <!-- Recipient "Submit Need" Button -->
+        <button onclick="openRecipientNeedModal()" class="px-3.5 py-2 rounded-lg text-xs font-bold text-slate-800 bg-white border border-slate-300 hover:border-slate-400 hover:bg-slate-50 shadow-sm transition flex items-center gap-1.5">
+          <i data-lucide="plus-circle" class="w-3.5 h-3.5 text-slate-600"></i>
+          <span>Submit a Need</span>
         </button>
 
-        <!-- Patron "Quick Clear" Mode Button -->
-        <button onclick="openPatronOnboarding()" class="px-4 py-2 rounded-lg text-xs font-semibold bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-obsidian-950 shadow-glow-gold transition flex items-center gap-2">
-          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-          <span>Patron Guild</span>
+        <!-- Patron Guild Founders Special Rate ($299/mo offer on $499/mo) -->
+        <button onclick="openPatronGuildModal()" class="hidden sm:flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-bold bg-amber-500 hover:bg-amber-600 text-white shadow-sm transition">
+          <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-200"></i>
+          <span>Patron Guild <span class="bg-amber-700/80 px-1.5 py-0.5 rounded text-[10px] ml-1">$299/mo</span></span>
         </button>
+
+        <!-- User Account Bar / Login State -->
+        <div id="auth-nav-container">
+          <!-- Injected via JavaScript based on login state -->
+        </div>
+
       </div>
 
     </div>
   </header>
 
-  <!-- MAIN WRAPPER -->
+  <!-- MAIN CONTAINER -->
   <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-1">
 
-    <!-- HERO SECTION -->
-    <section class="text-center pt-8 pb-14 max-w-4xl mx-auto relative">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-obsidian-900 border border-gold-500/30 text-gold-400 text-xs font-mono mb-6">
-        <span class="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse"></span>
-        <span>Where extraordinary abundance meets urgent human need</span>
+    <!-- HERO HEADER -->
+    <section class="text-center pt-6 pb-12 max-w-4xl mx-auto relative">
+      
+      <!-- Top Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-amber-300 shadow-sm text-amber-900 text-xs font-mono font-medium mb-5">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+        <span>The Philanthropic Clearinghouse for UHNW Benefactors & Global Needs</span>
       </div>
 
-      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif italic text-white tracking-tight leading-[1.08] mb-6">
-        Clear a stranger's burden.<br>
-        <span class="not-italic font-sans font-extrabold bg-gradient-to-r from-white via-slate-200 to-gold-400 bg-clip-text text-transparent">
-          Directly. Happily. Now.
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif italic text-slate-900 tracking-tight leading-[1.08] mb-5">
+        Clear a human burden today.<br>
+        <span class="not-italic font-sans font-extrabold text-slate-950 tracking-tight">
+          Earn Elite Miles. 0% Recipient Fees.
         </span>
       </h1>
 
-      <p class="text-base sm:text-lg text-slate-400 font-normal max-w-2xl mx-auto mb-10 leading-relaxed">
-        No administrative decay. No 20% overhead. BPay lets high-net-worth benefactors pay verified medical bills, tuition invoices, rent arrears, and urgent debts directly to the biller or recipient with 1-click Apple Pay, Google Pay, Cards, or Crypto.
+      <p class="text-base sm:text-lg text-slate-600 font-normal max-w-3xl mx-auto mb-8 leading-relaxed">
+        BPay connects verified high-net-worth patrons directly to everyday families, students, and patients worldwide. Whether it's an emergency surgery, final semester tuition, verified rent arrears, or a single mom's grocery run — every cent is protected, authenticated, and settled directly.
       </p>
 
-      <!-- Quick Trust Indicators -->
-      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-slate-400 mb-8">
-        <div class="flex items-center gap-1.5 bg-obsidian-900/90 border border-white/5 px-3 py-1.5 rounded-md">
-          <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i>
-          <span>Govt ID + Biometric KYC</span>
+      <!-- WHY BILLIONAIRES PAY (THE 4 CORE INCENTIVES) -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-left mb-10 max-w-4xl mx-auto">
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-card">
+          <div class="flex items-center gap-2 text-blue-700 font-bold text-xs mb-1">
+            <i data-lucide="plane-takeoff" class="w-4 h-4"></i>
+            <span>Elite Airlines Miles</span>
+          </div>
+          <p class="text-[11px] text-slate-600 leading-tight">
+            Earn 3x to 5x Amex & Card Points transferable to <strong>Emirates Skywards & Singapore KrisFlyer</strong> on all clearances.
+          </p>
         </div>
-        <div class="flex items-center gap-1.5 bg-obsidian-900/90 border border-white/5 px-3 py-1.5 rounded-md">
-          <i data-lucide="file-check" class="w-3.5 h-3.5 text-emerald-400"></i>
-          <span>OCR Bill & EIN Forensic Audit</span>
+
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-card">
+          <div class="flex items-center gap-2 text-emerald-700 font-bold text-xs mb-1">
+            <i data-lucide="file-check-2" class="w-4 h-4"></i>
+            <span>IRS §2503(e) Exemption</span>
+          </div>
+          <p class="text-[11px] text-slate-600 leading-tight">
+            Direct medical & educational institutional payments bypass federal gift tax limits entirely with zero lifetime exemption penalty.
+          </p>
         </div>
-        <div class="flex items-center gap-1.5 bg-obsidian-900/90 border border-white/5 px-3 py-1.5 rounded-md">
-          <i data-lucide="coins" class="w-3.5 h-3.5 text-gold-400"></i>
-          <span>Multi-Rail: Card • Apple/Google Pay • Crypto</span>
+
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-card">
+          <div class="flex items-center gap-2 text-amber-700 font-bold text-xs mb-1">
+            <i data-lucide="video" class="w-4 h-4"></i>
+            <span>Private Video Vault</span>
+          </div>
+          <p class="text-[11px] text-slate-600 leading-tight">
+            Personal video requests from recipients are protected with end-to-end privacy, visible <strong>exclusively to verified Patrons</strong>.
+          </p>
         </div>
-        <div class="flex items-center gap-1.5 bg-obsidian-900/90 border border-white/5 px-3 py-1.5 rounded-md">
-          <i data-lucide="receipt" class="w-3.5 h-3.5 text-blue-400"></i>
-          <span>IRS §2503(e) Direct Exclusion Compliant</span>
+
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-card">
+          <div class="flex items-center gap-2 text-slate-800 font-bold text-xs mb-1">
+            <i data-lucide="shield-check" class="w-4 h-4"></i>
+            <span>0% Fee to Recipient</span>
+          </div>
+          <p class="text-[11px] text-slate-600 leading-tight">
+            All card processing & withdrawal fees are added to the patron's checkout. The person in need receives <strong>100.0% of their ask</strong>.
+          </p>
         </div>
       </div>
 
-      <!-- Mode Quick Switcher -->
-      <div class="inline-flex p-1.5 rounded-xl bg-obsidian-900/90 border border-white/10 shadow-glass">
-        <button id="view-feed-btn" onclick="switchView('feed')" class="px-5 py-2.5 rounded-lg text-xs font-bold transition flex items-center gap-2 bg-gold-500 text-obsidian-950 shadow-glow-gold">
+      <!-- Navigation Mode Tabs -->
+      <div class="inline-flex p-1.5 rounded-xl bg-white border border-slate-200 shadow-sm">
+        <button id="tab-feed-btn" onclick="switchView('feed')" class="px-5 py-2.5 rounded-lg text-xs font-bold transition flex items-center gap-2 bg-slate-900 text-white shadow-sm">
           <i data-lucide="layers" class="w-4 h-4"></i>
-          <span>Live Expense Feed</span>
+          <span>Verified Needs Feed</span>
         </button>
-        <button id="view-zen-btn" onclick="switchView('zen')" class="px-5 py-2.5 rounded-lg text-xs font-bold transition flex items-center gap-2 text-slate-400 hover:text-white">
-          <i data-lucide="zap" class="w-4 h-4"></i>
+        <button id="tab-zen-btn" onclick="switchView('zen')" class="px-5 py-2.5 rounded-lg text-xs font-bold transition flex items-center gap-2 text-slate-600 hover:text-slate-900">
+          <i data-lucide="zap" class="w-4 h-4 text-amber-600"></i>
           <span>Zen 1-Click Clear Mode</span>
         </button>
-        <button id="view-monetize-btn" onclick="switchView('monetize')" class="px-5 py-2.5 rounded-lg text-xs font-bold transition flex items-center gap-2 text-slate-400 hover:text-white">
-          <i data-lucide="pie-chart" class="w-4 h-4"></i>
-          <span>Monetization & Live Pitch</span>
+        <button id="tab-incentives-btn" onclick="switchView('incentives')" class="px-5 py-2.5 rounded-lg text-xs font-bold transition flex items-center gap-2 text-slate-600 hover:text-slate-900">
+          <i data-lucide="gift" class="w-4 h-4 text-blue-600"></i>
+          <span>Billionaire Incentives & Miles</span>
+        </button>
+        <button id="tab-institutions-btn" onclick="switchView('institutions')" class="px-5 py-2.5 rounded-lg text-xs font-bold transition flex items-center gap-2 text-slate-600 hover:text-slate-900">
+          <i data-lucide="globe-2" class="w-4 h-4 text-emerald-600"></i>
+          <span>Global Institutions & Deeds</span>
+        </button>
+      </div>
+
+    </section>
+
+
+    <!-- VIEW 1: VERIFIED NEEDS FEED (DEFAULT) -->
+    <section id="view-feed" class="space-y-6">
+      
+      <!-- Category Filter Pills & Search -->
+      <div class="bg-white p-4 rounded-2xl flex flex-col md:flex-row gap-4 items-center justify-between border border-slate-200 shadow-card">
+        
+        <!-- Category Filter Buttons -->
+        <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-none" id="category-filter-list">
+          <button onclick="filterCategory('all')" class="category-btn active px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-white whitespace-nowrap transition">
+            All Needs (<span id="count-all">8</span>)
+          </button>
+          <button onclick="filterCategory('medical')" class="category-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 whitespace-nowrap transition">
+            Medical & Surgery
+          </button>
+          <button onclick="filterCategory('tuition')" class="category-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 whitespace-nowrap transition">
+            University & School
+          </button>
+          <button onclick="filterCategory('rent')" class="category-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 whitespace-nowrap transition">
+            Rent & Tenancy Deeds
+          </button>
+          <button onclick="filterCategory('groceries')" class="category-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 whitespace-nowrap transition">
+            Groceries & Food Security
+          </button>
+          <button onclick="filterCategory('children')" class="category-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 whitespace-nowrap transition">
+            Children's Essentials
+          </button>
+          <button onclick="filterCategory('home')" class="category-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 whitespace-nowrap transition">
+            Home & Emergency Repairs
+          </button>
+        </div>
+
+        <!-- Sort and Surprise Grant -->
+        <div class="flex items-center gap-3 w-full md:w-auto justify-end">
+          <div class="relative w-full md:w-44">
+            <select id="sort-selector" onchange="sortExpenses()" class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-xs rounded-lg px-3 py-2 appearance-none focus:outline-none focus:border-slate-900 font-medium">
+              <option value="urgent">Sort: Highest Urgency</option>
+              <option value="amount-low">Amount: Lowest First</option>
+              <option value="amount-high">Amount: Highest First</option>
+              <option value="video">Has Video Appeal First</option>
+            </select>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-500 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+          </div>
+          
+          <button onclick="triggerSurpriseGrant()" class="px-3.5 py-2 rounded-lg text-xs font-bold bg-amber-50 text-amber-800 border border-amber-300 hover:bg-amber-100 transition flex items-center gap-1.5 whitespace-nowrap">
+            <i data-lucide="shuffle" class="w-3.5 h-3.5"></i>
+            <span>Surprise Grant</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Needs Card Grid -->
+      <div id="needs-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Injected via JavaScript -->
+      </div>
+
+    </section>
+
+
+    <!-- VIEW 2: ZEN 1-CLICK CLEAR MODE -->
+    <section id="view-zen" class="hidden max-w-xl mx-auto space-y-6">
+      <div class="text-center space-y-1 mb-2">
+        <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-800 font-mono text-xs font-bold inline-flex items-center gap-1.5">
+          <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+          <span>Zen Patron Mode</span>
+        </span>
+        <h2 class="text-2xl font-serif italic text-slate-900">One Tap. One Family Relieved.</h2>
+        <p class="text-xs text-slate-500">Carefully authenticated requests in high-focus mode. Withdrawal fee included automatically.</p>
+      </div>
+
+      <div id="zen-card-container">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <div class="flex items-center justify-center gap-6 pt-2">
+        <button onclick="nextZenCard()" class="w-14 h-14 rounded-full bg-white border border-slate-300 hover:border-slate-400 text-slate-700 hover:text-slate-900 flex items-center justify-center transition shadow-sm group">
+          <i data-lucide="arrow-right" class="w-6 h-6 group-hover:translate-x-1 transition-transform"></i>
+        </button>
+        <button onclick="clearCurrentZenCard()" class="px-8 py-4 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-base shadow-lg transition flex items-center gap-3">
+          <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400"></i>
+          <span>Clear This Need Instantly</span>
         </button>
       </div>
     </section>
 
-    <!-- STATS STRIP -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-      <div class="glass-panel p-5 rounded-2xl border border-white/5">
-        <div class="text-xs font-mono uppercase text-slate-400 mb-1 flex items-center justify-between">
-          <span>Medical Debt Eradicated</span>
-          <i data-lucide="heart-pulse" class="w-4 h-4 text-rose-400"></i>
+
+    <!-- VIEW 3: BILLIONAIRE INCENTIVES & MILES EXPLORER -->
+    <section id="view-incentives" class="hidden space-y-8">
+      
+      <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-card">
+        <div class="max-w-3xl mb-8">
+          <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-mono font-bold inline-flex items-center gap-1 mb-3">
+            <i data-lucide="plane-takeoff" class="w-3.5 h-3.5"></i>
+            <span>High-Net-Worth Value Proposition</span>
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-serif italic text-slate-900 mb-3">
+            Why Billionaires Pay Happily on BPAY
+          </h2>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Ultra-wealthy individuals do not want bureaucratic charity dinners where 30% is wasted. They want **real human impact**, **zero friction**, **high-tier credit card rewards**, and **tax optimization**.
+          </p>
         </div>
-        <div class="text-2xl font-bold font-mono text-white">$1,920,400</div>
-        <div class="text-[11px] text-emerald-400 font-mono mt-1">↑ 100% paid directly to hospitals</div>
-      </div>
 
-      <div class="glass-panel p-5 rounded-2xl border border-white/5">
-        <div class="text-xs font-mono uppercase text-slate-400 mb-1 flex items-center justify-between">
-          <span>Tuition & Student Invoices</span>
-          <i data-lucide="graduation-cap" class="w-4 h-4 text-blue-400"></i>
-        </div>
-        <div class="text-2xl font-bold font-mono text-white">$1,450,230</div>
-        <div class="text-[11px] text-blue-400 font-mono mt-1">428 Students Kept in School</div>
-      </div>
-
-      <div class="glass-panel p-5 rounded-2xl border border-white/5">
-        <div class="text-xs font-mono uppercase text-slate-400 mb-1 flex items-center justify-between">
-          <span>Average Clearance Speed</span>
-          <i data-lucide="timer" class="w-4 h-4 text-gold-400"></i>
-        </div>
-        <div class="text-2xl font-bold font-mono text-white">4.2 Minutes</div>
-        <div class="text-[11px] text-gold-400 font-mono mt-1">Instant Apple Pay / Web3 settlement</div>
-      </div>
-
-      <div class="glass-panel p-5 rounded-2xl border border-white/5">
-        <div class="text-xs font-mono uppercase text-slate-400 mb-1 flex items-center justify-between">
-          <span>Fraud Prevention Score</span>
-          <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
-        </div>
-        <div class="text-2xl font-bold font-mono text-emerald-400">99.98%</div>
-        <div class="text-[11px] text-slate-400 font-mono mt-1">Multi-tier forensic verification</div>
-      </div>
-    </div>
-
-    <!-- MAIN VIEW CONTAINER -->
-    <div id="main-view-container">
-
-      <!-- VIEW 1: LIVE EXPENSE FEED (Default) -->
-      <section id="view-feed" class="space-y-6">
-        
-        <!-- Filter and Search Bar -->
-        <div class="glass-panel p-4 rounded-2xl flex flex-col md:flex-row gap-4 items-center justify-between border border-white/5">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           
-          <!-- Category Filter Pills -->
-          <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-none" id="category-filters">
-            <button onclick="filterCategory('all')" class="category-btn active px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white/10 text-white border border-white/10 whitespace-nowrap transition">
-              All Urgent Burdens (<span id="count-all">6</span>)
-            </button>
-            <button onclick="filterCategory('medical')" class="category-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-white/5 border border-transparent whitespace-nowrap transition">
-              Medical & Surgery
-            </button>
-            <button onclick="filterCategory('tuition')" class="category-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-white/5 border border-transparent whitespace-nowrap transition">
-              Education & Tuition
-            </button>
-            <button onclick="filterCategory('housing')" class="category-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-white/5 border border-transparent whitespace-nowrap transition">
-              Rent & Eviction Shield
-            </button>
-            <button onclick="filterCategory('emergency')" class="category-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-white/5 border border-transparent whitespace-nowrap transition">
-              Single Parent & Family
-            </button>
-            <button onclick="filterCategory('business')" class="category-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-white/5 border border-transparent whitespace-nowrap transition">
-              Artisan & Small Venture
-            </button>
+          <!-- Incentive 1: First Class Miles Multiplier -->
+          <div class="p-6 rounded-2xl bg-blue-50/60 border border-blue-200/80 space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-sm">
+              <i data-lucide="plane" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-base font-bold text-slate-900">1. Elite Airline Miles & Tier Status</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              When patrons clear expenses with cards like the <strong>Amex Centurion, Platinum, or Chase Sapphire</strong>, BPay's educational and institutional merchant codes trigger maximum multiplier points.
+            </p>
+            <div class="p-3 bg-white rounded-xl border border-blue-200 text-xs font-mono space-y-1">
+              <div class="text-blue-900 font-bold">Clear $10,000 on BPay:</div>
+              <div class="text-slate-600">→ Earn <strong>30,000 to 50,000</strong> Points</div>
+              <div class="text-emerald-700 font-semibold">→ Direct transfers to Emirates Skywards & Singapore Airlines KrisFlyer!</div>
+            </div>
           </div>
 
-          <!-- Sort and Status Filter -->
-          <div class="flex items-center gap-3 w-full md:w-auto justify-end">
-            <div class="relative w-full md:w-48">
-              <select id="sort-selector" onchange="sortExpenses()" class="w-full bg-obsidian-900 border border-white/10 text-slate-300 text-xs rounded-lg px-3 py-2 appearance-none focus:outline-none focus:border-gold-500">
-                <option value="urgent">Sort: Highest Urgency</option>
-                <option value="amount-low">Sort: Amount (Lowest First)</option>
-                <option value="amount-high">Sort: Amount (Highest First)</option>
-                <option value="recent">Sort: Recently Verified</option>
+          <!-- Incentive 2: IRS Gift Tax Exclusion -->
+          <div class="p-6 rounded-2xl bg-amber-50/60 border border-amber-200/80 space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-600 text-white flex items-center justify-center shadow-sm">
+              <i data-lucide="landmark" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-base font-bold text-slate-900">2. Unlimited Gift Tax Shield (IRS §2503(e))</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Under federal tax law, payments made <strong>directly to an educational institution or healthcare provider</strong> are completely exempt from the annual gift tax cap ($18,000/yr) and never erode the donor's lifetime exemption.
+            </p>
+            <div class="p-3 bg-white rounded-xl border border-amber-200 text-xs font-mono space-y-1">
+              <div class="text-amber-900 font-bold">Family Office Advantage:</div>
+              <div class="text-slate-600">Patrons can clear $100k+ in student & medical bills with zero gift-tax penalties.</div>
+            </div>
+          </div>
+
+          <!-- Incentive 3: Private Video Vault & Direct Gratitude -->
+          <div class="p-6 rounded-2xl bg-emerald-50/60 border border-emerald-200/80 space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-sm">
+              <i data-lucide="video" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-base font-bold text-slate-900">3. Exclusive Verified Video Access</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Recipients can upload personal 30-second video appeals explaining their burden. To protect the recipient's human dignity, <strong>only verified logged-in Patrons have permission to watch these videos</strong>.
+            </p>
+            <div class="p-3 bg-white rounded-xl border border-emerald-200 text-xs font-mono space-y-1">
+              <div class="text-emerald-900 font-bold">Unfiltered Human Connection:</div>
+              <div class="text-slate-600">Direct heartfelt video gratitude without public social exposure.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Interactive Miles Calculator -->
+        <div class="mt-8 p-6 bg-slate-900 rounded-2xl text-white flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="space-y-1 max-w-md">
+            <div class="text-amber-400 font-mono text-xs uppercase font-bold flex items-center gap-1.5">
+              <i data-lucide="calculator" class="w-4 h-4"></i>
+              <span>Live Patron Rewards Calculator</span>
+            </div>
+            <h4 class="text-lg font-bold">How many miles will your clearance earn?</h4>
+            <p class="text-xs text-slate-300">Select your monthly clearing target to see estimated first-class airline miles.</p>
+          </div>
+
+          <div class="flex items-center gap-4 w-full md:w-auto">
+            <div class="space-y-1">
+              <label class="text-[10px] font-mono text-slate-400">Clearing Amount:</label>
+              <select id="calc-amount" onchange="calculateAirlineMiles()" class="bg-slate-800 border border-slate-700 rounded-xl px-4 py-2 text-xs font-bold text-white focus:outline-none">
+                <option value="2500">$2,500 / month</option>
+                <option value="5000" selected>$5,000 / month</option>
+                <option value="15000">$15,000 / month</option>
+                <option value="50000">$50,000 / month</option>
               </select>
-              <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
             </div>
-            
-            <button onclick="openRandomClearModal()" class="px-3.5 py-2 rounded-lg text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20 transition flex items-center gap-1.5 whitespace-nowrap">
-              <i data-lucide="shuffle" class="w-3.5 h-3.5"></i>
-              <span>Surprise Grant</span>
-            </button>
-          </div>
 
-        </div>
-
-        <!-- Expense Cards Grid -->
-        <div id="expense-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- Dynamically Injected Cards -->
-        </div>
-
-      </section>
-
-
-      <!-- VIEW 2: ZEN 1-CLICK CLEAR REEL (Tinder/Reels style quick-grant mode for Patrons) -->
-      <section id="view-zen" class="hidden max-w-xl mx-auto space-y-6">
-        <div class="text-center space-y-2 mb-4">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 font-mono text-xs">
-            <i data-lucide="zap" class="w-3.5 h-3.5"></i>
-            <span>Zen Angel Mode</span>
-          </div>
-          <h2 class="text-2xl font-serif italic text-white">One Card. One Burden. One Tap.</h2>
-          <p class="text-xs text-slate-400">Review verified bills in pure focus. Press Clear or swipe next to grant immediately.</p>
-        </div>
-
-        <!-- Zen Card Container -->
-        <div id="zen-card-container" class="relative min-h-[480px]">
-          <!-- Injected via JavaScript -->
-        </div>
-
-        <!-- Zen Controls -->
-        <div class="flex items-center justify-center gap-6 pt-4">
-          <button onclick="nextZenCard()" class="w-14 h-14 rounded-full bg-obsidian-900 border border-white/10 hover:border-white/30 text-slate-400 hover:text-white flex items-center justify-center transition shadow-lg group">
-            <i data-lucide="arrow-right" class="w-6 h-6 group-hover:translate-x-1 transition-transform"></i>
-          </button>
-          <button onclick="clearCurrentZenCard()" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-obsidian-950 font-bold text-base shadow-glow-gold transition flex items-center gap-3">
-            <i data-lucide="check-circle" class="w-5 h-5"></i>
-            <span>Clear This Bill Now</span>
-          </button>
-        </div>
-      </section>
-
-
-      <!-- VIEW 3: MONETIZATION ARCHITECTURE & INVESTOR PITCH -->
-      <section id="view-monetize" class="hidden space-y-8">
-        
-        <div class="glass-panel p-8 rounded-3xl border border-gold-500/20 relative overflow-hidden">
-          <div class="absolute -right-20 -top-20 w-80 h-80 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
-          
-          <div class="max-w-3xl">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 font-mono text-xs mb-3">
-              <i data-lucide="trending-up" class="w-3.5 h-3.5"></i>
-              <span>High-Margin Philanthropic Fintech</span>
+            <div class="p-3 bg-slate-800 rounded-xl border border-slate-700 text-center min-w-[170px]">
+              <div class="text-[10px] font-mono text-slate-400">Estimated Annual Miles:</div>
+              <div class="text-xl font-bold font-mono text-amber-400" id="calc-miles-output">180,000 Miles</div>
+              <div class="text-[10px] text-emerald-400 font-mono">Emirates First Class Ready ✈</div>
             </div>
-            <h2 class="text-3xl sm:text-4xl font-serif italic text-white mb-4">
-              How BPay Monetizes Ethically & Scales Globally
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- VIEW 4: GLOBAL INSTITUTIONS & LEASE VERIFICATION -->
+    <section id="view-institutions" class="hidden space-y-6">
+      
+      <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-card">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+          <div>
+            <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-mono font-bold inline-flex items-center gap-1 mb-2">
+              <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+              <span>International Settlement Directory</span>
+            </span>
+            <h2 class="text-3xl font-serif italic text-slate-900">
+              Global Institutions, Hospitals & Verified Rent Deeds
             </h2>
-            <p class="text-slate-300 text-sm leading-relaxed mb-6">
-              Billionaires hate bureaucratic charity overhead (typically 20% to 35% in traditional non-profits), but gladly pay for premium trust, verified legal tax avoidance (IRS §2503(e)), and concierge impact reporting. Here is the 5-pillar monetization engine programmed directly into this platform:
+            <p class="text-xs text-slate-500 mt-1">
+              BPay connects directly to institutions worldwide across the US, UK, Europe, Australia, Canada, UAE, and Singapore.
             </p>
           </div>
 
-          <!-- 5 Monetization Pillars Grid -->
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
-            
-            <!-- Pillar 1: Optional Donor Tipping Model -->
-            <div class="bg-obsidian-900/80 p-6 rounded-2xl border border-white/5 space-y-3">
-              <div class="w-10 h-10 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400">
-                <i data-lucide="heart-handshake" class="w-5 h-5"></i>
-              </div>
-              <h3 class="text-base font-bold text-white">1. Voluntary Benefactor Tip (5% - 15%)</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">
-                Just like GoFundMe's billion-dollar tip model. Benefactors clearing a $3,000 tuition bill happily add a 10% ($300) platform tip to fund fraud audits and maintain zero fees for vulnerable recipients.
-              </p>
-              <div class="text-xs font-mono text-gold-400 font-semibold">Average conversion: 82% of donors tip</div>
-            </div>
+          <button onclick="openRegisterInstitutionModal()" class="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs shadow-sm transition flex items-center gap-2 self-start md:self-auto">
+            <i data-lucide="plus" class="w-4 h-4"></i>
+            <span>Register a University / Hospital / Landlord</span>
+          </button>
+        </div>
 
-            <!-- Pillar 2: Priority Express Audit Fee -->
-            <div class="bg-obsidian-900/80 p-6 rounded-2xl border border-white/5 space-y-3">
-              <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-                <i data-lucide="zap" class="w-5 h-5"></i>
-              </div>
-              <h3 class="text-base font-bold text-white">2. Express Audit & Spotlight ($9.99)</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">
-                Recipients facing imminent shutoff or eviction can opt for "Express Priority". Guaranteed human & AI OCR document review within 20 minutes and spotlight placement at the top of the benefactor feed.
-              </p>
-              <div class="text-xs font-mono text-emerald-400 font-semibold">High volume self-sustaining revenue</div>
+        <!-- Global Coverage Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+            <div class="text-xs font-bold text-slate-900 flex items-center gap-1.5 mb-1">
+              <i data-lucide="graduation-cap" class="w-4 h-4 text-blue-600"></i>
+              <span>Global Universities</span>
             </div>
+            <p class="text-[11px] text-slate-600">Direct wire to bursars: Stanford, Oxford, Sydney Uni, Toronto, NUS Singapore, ETH Zurich.</p>
+          </div>
 
-            <!-- Pillar 3: Patron Black Guild Subscription -->
-            <div class="bg-obsidian-900/80 p-6 rounded-2xl border border-white/5 space-y-3">
-              <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400">
-                <i data-lucide="crown" class="w-5 h-5"></i>
-              </div>
-              <h3 class="text-base font-bold text-white">3. Patron Black Guild ($499 / mo)</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">
-                SaaS tier for family offices, crypto whales, and tech executives. Provides automated monthly auto-clearing budgets, concierge CPA tax receipt bundles, and direct institutional payments that bypass gift tax limits.
-              </p>
-              <div class="text-xs font-mono text-blue-400 font-semibold">$5,988 ARR per high-net-worth member</div>
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+            <div class="text-xs font-bold text-slate-900 flex items-center gap-1.5 mb-1">
+              <i data-lucide="heart-pulse" class="w-4 h-4 text-rose-600"></i>
+              <span>Hospitals & Clinics</span>
             </div>
+            <p class="text-[11px] text-slate-600">Direct clearing with NHS Trusts, Mayo Clinic, Cleveland Clinic, Charité Berlin, Royal Melbourne.</p>
+          </div>
 
-            <!-- Pillar 4: Crypto On/Off Ramp Spread -->
-            <div class="bg-obsidian-900/80 p-6 rounded-2xl border border-white/5 space-y-3">
-              <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400">
-                <i data-lucide="coins" class="w-5 h-5"></i>
-              </div>
-              <h3 class="text-base font-bold text-white">4. Crypto FX Spread & Treasury Yield</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">
-                0.5% exchange spread on crypto to fiat payouts (USDC, USDT, ETH, SOL, BTC). Platform earns 4.8% APY on escrowed stablecoin liquidity pools waiting for settlement cycles.
-              </p>
-              <div class="text-xs font-mono text-purple-400 font-semibold">Native Web3 decentralized treasury</div>
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+            <div class="text-xs font-bold text-slate-900 flex items-center gap-1.5 mb-1">
+              <i data-lucide="home" class="w-4 h-4 text-emerald-600"></i>
+              <span>Rent & Tenancy Deeds</span>
             </div>
+            <p class="text-[11px] text-slate-600">Forensic lease contract scanning. Direct escrow payment to registered landlords & housing trusts.</p>
+          </div>
 
-            <!-- Pillar 5: B2B Corporate Matching -->
-            <div class="bg-obsidian-900/80 p-6 rounded-2xl border border-white/5 space-y-3">
-              <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
-                <i data-lucide="building-2" class="w-5 h-5"></i>
-              </div>
-              <h3 class="text-base font-bold text-white">5. Corporate & Brand Matching Grants</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">
-                Companies match employee or public benefactor grants for ESG branding (e.g. "Google matches $50,000 for local healthcare bills"). BPay charges an 8% enterprise management fee.
-              </p>
-              <div class="text-xs font-mono text-amber-400 font-semibold">Institutional enterprise contracts</div>
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+            <div class="text-xs font-bold text-slate-900 flex items-center gap-1.5 mb-1">
+              <i data-lucide="shopping-bag" class="w-4 h-4 text-amber-600"></i>
+              <span>Groceries & Essentials</span>
             </div>
-
-            <!-- Live Revenue Calculator -->
-            <div class="glass-panel-gold p-6 rounded-2xl space-y-3 flex flex-col justify-between">
-              <div>
-                <span class="text-xs font-mono uppercase text-gold-400 font-bold">Interactive Projection</span>
-                <h3 class="text-base font-bold text-white mt-1">Platform Revenue Calculator</h3>
-                <p class="text-xs text-slate-300 mt-2">
-                  At $1,000,000 cleared monthly:
-                  <br>• Tips (8% avg): <strong class="text-white">$80,000</strong>
-                  <br>• Guild Subs (100 members): <strong class="text-white">$49,900</strong>
-                  <br>• Express Audits (1,500 @ $9.99): <strong class="text-white">$14,985</strong>
-                </p>
-              </div>
-              <div class="p-3 bg-obsidian-950/80 rounded-xl border border-gold-500/30 text-center">
-                <div class="text-[11px] text-slate-400 font-mono">Projected Monthly Platform Net:</div>
-                <div class="text-2xl font-bold font-mono text-emerald-400">$144,885 / mo</div>
-              </div>
-            </div>
-
+            <p class="text-[11px] text-slate-600">Digital supermarket vouchers (Walmart, Woolworths, Tesco, Carrefour) or direct card top-up with zero fees.</p>
           </div>
         </div>
 
-      </section>
+        <!-- How Landlord Onboarding Works -->
+        <div class="p-6 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-3">
+          <h4 class="text-sm font-bold text-amber-950 flex items-center gap-2">
+            <i data-lucide="file-text" class="w-4 h-4 text-amber-700"></i>
+            <span>How We Verify & Settle Rent Arrears Securely</span>
+          </h4>
+          <ol class="text-xs text-slate-700 space-y-2 list-decimal list-inside leading-relaxed">
+            <li><strong>Tenancy Contract Upload:</strong> The tenant uploads their official residential lease deed with landlord contact details.</li>
+            <li><strong>Forensic Metadata & Title Check:</strong> BPay cross-references property registry databases to verify that the named landlord owns or manages the premises.</li>
+            <li><strong>Direct Bank Settlement:</strong> When a patron clears the rent, funds are transferred straight to the landlord's verified bank account or property management portal, issuing an automated rent receipt that halts eviction proceedings immediately.</li>
+          </ol>
+        </div>
 
-    </div>
+      </div>
+
+    </section>
 
   </main>
 
   <!-- FOOTER -->
-  <footer class="relative z-10 border-t border-white/5 bg-obsidian-950/80 backdrop-blur-md py-12 mt-20">
+  <footer class="relative z-10 border-t border-slate-200 bg-white py-12 mt-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-white/5">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-200">
+        
         <div class="flex items-center gap-3">
-          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-gold-400 to-amber-600 flex items-center justify-center text-obsidian-950 font-serif font-bold text-lg">
+          <div class="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center text-amber-400 font-serif font-bold text-lg">
             B
           </div>
-          <span class="font-bold tracking-tight text-white font-sans text-sm">BPAY PROTOCOL</span>
-          <span class="text-xs text-slate-400">| Direct Philanthropic Clearinghouse</span>
+          <div>
+            <span class="font-extrabold tracking-tight text-slate-900 font-sans text-sm">BPAY PROTOCOL</span>
+            <span class="text-xs text-slate-500"> | Global Direct Philanthropic Clearinghouse</span>
+          </div>
         </div>
 
-        <div class="flex flex-wrap items-center gap-6 text-xs text-slate-400 font-mono">
-          <a href="javascript:void(0)" onclick="openVerificationModal()" class="hover:text-gold-400 transition">Fraud Architecture</a>
-          <a href="javascript:void(0)" onclick="openLegalModal()" class="hover:text-gold-400 transition">Tax & IRS §2503(e) Exemption</a>
-          <a href="javascript:void(0)" onclick="openCryptoDocsModal()" class="hover:text-gold-400 transition">Web3 & Smart Contracts</a>
-          <a href="javascript:void(0)" onclick="openDeployGuideModal()" class="hover:text-emerald-400 font-semibold transition">How to Deploy Live (Vercel/Netlify)</a>
+        <div class="flex flex-wrap items-center gap-6 text-xs text-slate-600 font-mono">
+          <a href="javascript:void(0)" onclick="openVerificationModal()" class="hover:text-slate-900 transition">Forensic Fraud Architecture</a>
+          <a href="javascript:void(0)" onclick="openLegalModal()" class="hover:text-slate-900 transition">IRS §2503(e) Exemption</a>
+          <a href="javascript:void(0)" onclick="openAirlineMilesModal()" class="hover:text-blue-700 font-bold transition">Airline Miles Multiplier</a>
+          <a href="javascript:void(0)" onclick="openPatronGuildModal()" class="hover:text-amber-700 font-bold transition">Patron Guild ($299/mo)</a>
         </div>
+
       </div>
 
-      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 font-mono">
-        <p>© 2026 BPAY Inc. All Rights Reserved. Built for radical kindness, maximum security, and direct human impact.</p>
-        <p class="text-slate-400">Card • Apple Pay • Google Pay • ACH • Bitcoin • Ethereum • Solana USDC</p>
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-mono">
+        <p>© 2026 BPAY Inc. All Rights Reserved. Built for radical human dignity and zero-fee relief.</p>
+        <div class="flex items-center gap-2 text-slate-600">
+          <span class="font-bold">Supported Rails:</span>
+          <span> Apple Pay</span> • <span>Google Pay</span> • <span>Amex / Visa / Mastercard</span> • <span>Direct Bank Wire</span>
+        </div>
       </div>
     </div>
   </footer>
 
   <!-- ========================================================================= -->
-  <!-- MODALS & FLOWS -->
+  <!-- MODALS -->
   <!-- ========================================================================= -->
 
-  <!-- MODAL 1: CHECKOUT & CLEAR EXPENSE MODAL (MULTI-PAYMENT: CARDS, APPLE/GOOGLE PAY, CRYPTO, BANK) -->
-  <div id="checkout-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-obsidian-950/85 backdrop-blur-md overflow-y-auto">
-    <div class="glass-panel w-full max-w-xl rounded-3xl border border-white/10 p-6 sm:p-8 shadow-2xl relative my-8 animate-in fade-in zoom-in-95 duration-200">
+  <!-- MODAL 1: DUAL-SIDED AUTHENTICATION (SIGN IN & REGISTER) -->
+  <div id="auth-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
+    <div class="bg-white w-full max-w-md rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-2xl relative my-8 animate-in fade-in zoom-in-95 duration-200">
       
-      <!-- Close Button -->
-      <button onclick="closeCheckoutModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition">
-        <i data-lucide="x" class="w-5 h-5"></i>
+      <button onclick="closeAuthModal()" class="absolute top-6 right-6 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition">
+        <i data-lucide="x" class="w-4 h-4"></i>
       </button>
 
-      <!-- Modal Header -->
-      <div class="mb-6">
+      <div class="text-center mb-6">
+        <div class="w-12 h-12 rounded-2xl bg-slate-900 text-amber-400 mx-auto flex items-center justify-center font-serif text-2xl font-bold mb-3">
+          B
+        </div>
+        <h3 class="text-2xl font-serif italic text-slate-900" id="auth-modal-title">Welcome to BPAY</h3>
+        <p class="text-xs text-slate-500 mt-1" id="auth-modal-sub">Choose your account type to proceed</p>
+      </div>
+
+      <!-- User Role Selector -->
+      <div class="grid grid-cols-2 gap-2 mb-6 p-1 bg-slate-100 rounded-xl text-xs font-bold">
+        <button type="button" onclick="setAuthRole('patron')" id="auth-role-patron" class="py-2.5 rounded-lg bg-white text-slate-900 shadow-sm transition">
+          I'm a Benefactor / Patron
+        </button>
+        <button type="button" onclick="setAuthRole('recipient')" id="auth-role-recipient" class="py-2.5 rounded-lg text-slate-500 hover:text-slate-800 transition">
+          I Have a Need to Clear
+        </button>
+      </div>
+
+      <!-- Auth Form -->
+      <form onsubmit="handleAuthSubmit(event)" class="space-y-4">
+        <div>
+          <label class="text-[11px] font-mono text-slate-600 block mb-1">Full Legal Name</label>
+          <input type="text" id="auth-name" required placeholder="e.g. Lord Alistair Vance or Maria Santos" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-slate-900">
+        </div>
+
+        <div>
+          <label class="text-[11px] font-mono text-slate-600 block mb-1">Email Address</label>
+          <input type="email" id="auth-email" required placeholder="name@domain.com" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-slate-900">
+        </div>
+
+        <!-- Patron Specific Field: Airline Rewards Program -->
+        <div id="patron-extra-fields" class="space-y-3">
+          <div>
+            <label class="text-[11px] font-mono text-blue-700 block mb-1 font-semibold flex items-center gap-1">
+              <i data-lucide="plane" class="w-3.5 h-3.5"></i>
+              <span>Preferred Airline Rewards Program</span>
+            </label>
+            <select id="auth-airline" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-slate-900">
+              <option value="emirates">Emirates Skywards</option>
+              <option value="krisflyer">Singapore Airlines KrisFlyer</option>
+              <option value="qatar">Qatar Airways Privilege Club</option>
+              <option value="amex">American Express Membership Rewards</option>
+              <option value="chase">Chase Ultimate Rewards</option>
+            </select>
+          </div>
+
+          <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+            <span class="text-slate-600 font-medium">Keep Profile 100% Anonymous</span>
+            <input type="checkbox" id="auth-anon-pref" checked class="w-4 h-4 rounded text-slate-900 focus:ring-slate-800">
+          </div>
+        </div>
+
+        <!-- Recipient Specific Field -->
+        <div id="recipient-extra-fields" class="hidden space-y-2">
+          <label class="text-[11px] font-mono text-emerald-700 block mb-1 font-semibold">Residing Country / Location</label>
+          <select id="auth-country" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-slate-900">
+            <option value="US">United States</option>
+            <option value="UK">United Kingdom</option>
+            <option value="AU">Australia</option>
+            <option value="CA">Canada</option>
+            <option value="EU">European Union</option>
+            <option value="AE">United Arab Emirates</option>
+            <option value="SG">Singapore</option>
+            <option value="GLOBAL">Other Worldwide</option>
+          </select>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs shadow-sm transition mt-2">
+          Create Account & Continue
+        </button>
+
+        <p class="text-[10px] text-center text-slate-400 font-mono pt-1">
+          Secure verification powered by Stripe Identity & Persona
+        </p>
+      </form>
+
+    </div>
+  </div>
+
+
+  <!-- MODAL 2: CHECKOUT & CLEAR WITH AUTOMATIC WITHDRAWAL FEE ADDED -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
+    <div class="bg-white w-full max-w-xl rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-2xl relative my-8 animate-in fade-in zoom-in-95 duration-200">
+      
+      <button onclick="closeCheckoutModal()" class="absolute top-6 right-6 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="mb-5">
         <div class="flex items-center gap-2 mb-2">
-          <span id="modal-category-badge" class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          <span id="modal-category-badge" class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-amber-100 text-amber-800 border border-amber-300">
             Medical & Surgery
           </span>
-          <span class="text-xs text-slate-400 font-mono flex items-center gap-1">
-            <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i>
-            <span>Verified Bill #B7829-2</span>
+          <span class="text-xs text-emerald-700 font-mono font-bold flex items-center gap-1">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+            <span>Forensic Verified Need</span>
           </span>
         </div>
-        <h3 id="modal-title" class="text-2xl font-serif italic text-white font-normal">
+        <h3 id="modal-title" class="text-2xl font-serif italic text-slate-900">
           Clear Elena's Pediatric Surgery Arrears
         </h3>
-        <p id="modal-subtitle" class="text-xs text-slate-400 mt-1">
-          Settlement paid directly to: <strong class="text-slate-200" id="modal-biller">Children's Hospital of Philadelphia</strong>
+        <p id="modal-payee-desc" class="text-xs text-slate-600 mt-1">
+          Settlement paid directly to: <strong class="text-slate-900" id="modal-biller">Children's Hospital of Philadelphia</strong>
         </p>
       </div>
 
-      <!-- Expense Summary Card -->
-      <div class="bg-obsidian-900/90 rounded-2xl p-4 border border-white/5 mb-6 space-y-3">
-        <div class="flex items-center justify-between text-sm">
-          <span class="text-slate-400">Original Verified Expense:</span>
-          <span class="text-xl font-bold font-mono text-white" id="modal-base-amount">$2,840.00</span>
+      <!-- Private Video Preview (Visible to Benefactors) -->
+      <div id="modal-video-section" class="p-3 bg-slate-50 rounded-2xl border border-slate-200 mb-5">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-1.5 text-xs font-bold text-slate-900">
+            <i data-lucide="video" class="w-4 h-4 text-amber-600"></i>
+            <span>Private Video Message from Recipient</span>
+          </div>
+          <span class="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-bold" id="video-access-badge">
+            Patron Access Only
+          </span>
         </div>
+
+        <div id="video-display-area" class="relative rounded-xl overflow-hidden bg-slate-800 text-white h-40 flex items-center justify-center text-center p-4">
+          <!-- Dynamically swapped based on login -->
+        </div>
+      </div>
+
+      <!-- Price Breakdown with Automatic Withdrawal Fee Addition -->
+      <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 mb-6 space-y-2.5">
         
-        <!-- Platform Tip Selector (Monetization Engine) -->
-        <div class="pt-3 border-t border-white/5">
-          <div class="flex items-center justify-between mb-2">
-            <span class="text-xs text-slate-300 font-medium flex items-center gap-1.5">
-              <i data-lucide="heart" class="w-3.5 h-3.5 text-gold-400"></i>
-              <span>Add Tip to Keep BPay Zero-Fee for Recipients:</span>
-            </span>
-            <span class="text-xs font-mono font-bold text-gold-400" id="modal-tip-display">+$284.00 (10%)</span>
+        <div class="flex items-center justify-between text-xs">
+          <span class="text-slate-600">Requested Need (Exact Amount):</span>
+          <span class="text-base font-bold font-mono text-slate-900" id="modal-base-amount">$2,840.00</span>
+        </div>
+
+        <!-- Automatic Fee Addition -->
+        <div class="flex items-center justify-between text-xs text-amber-900 bg-amber-50 p-2.5 rounded-xl border border-amber-200">
+          <div>
+            <span class="font-bold block">Processing & Withdrawal Fee (Covered by Patron):</span>
+            <span class="text-[10px] text-amber-700 font-mono">100% Net Guarantee: Recipient gets exact $2,840.00 with $0 deducted</span>
+          </div>
+          <span class="font-mono font-bold text-sm" id="modal-fee-amount">+$110.76</span>
+        </div>
+
+        <!-- Voluntary Platform Tip -->
+        <div class="pt-2 border-t border-slate-200">
+          <div class="flex items-center justify-between mb-2 text-xs">
+            <span class="text-slate-700 font-medium">Add Optional Tip for BPay Fraud Verification:</span>
+            <span class="font-mono font-bold text-amber-700" id="modal-tip-display">+$142.00 (5%)</span>
           </div>
 
           <div class="grid grid-cols-4 gap-2 text-xs font-mono">
-            <button type="button" onclick="setTip(0)" class="tip-btn py-1.5 rounded-lg border border-white/10 hover:border-gold-500/40 text-slate-400 hover:text-white transition">0%</button>
-            <button type="button" onclick="setTip(5)" class="tip-btn py-1.5 rounded-lg border border-white/10 hover:border-gold-500/40 text-slate-400 hover:text-white transition">5%</button>
-            <button type="button" onclick="setTip(10)" class="tip-btn active py-1.5 rounded-lg border border-gold-500 bg-gold-500/10 text-gold-400 font-bold transition">10%</button>
-            <button type="button" onclick="setTip(15)" class="tip-btn py-1.5 rounded-lg border border-white/10 hover:border-gold-500/40 text-slate-400 hover:text-white transition">15%</button>
+            <button type="button" onclick="setTipPercent(0)" class="tip-btn py-1 rounded-lg border border-slate-300 text-slate-600 hover:border-slate-400 transition">0%</button>
+            <button type="button" onclick="setTipPercent(5)" class="tip-btn active py-1 rounded-lg border border-slate-900 bg-slate-900 text-white font-bold transition">5%</button>
+            <button type="button" onclick="setTipPercent(10)" class="tip-btn py-1 rounded-lg border border-slate-300 text-slate-600 hover:border-slate-400 transition">10%</button>
+            <button type="button" onclick="setTipPercent(15)" class="tip-btn py-1 rounded-lg border border-slate-300 text-slate-600 hover:border-slate-400 transition">15%</button>
           </div>
         </div>
 
-        <!-- Total Calculation -->
-        <div class="pt-3 border-t border-white/5 flex items-center justify-between">
+        <!-- Total Clear Amount & Miles Multiplier -->
+        <div class="pt-3 border-t border-slate-200 flex items-center justify-between">
           <div>
-            <span class="text-xs text-slate-400 block">Total You Will Grant:</span>
-            <span class="text-[10px] text-emerald-400 font-mono">100% Tax-Deductible Direct Clearance</span>
-          </div>
-          <span class="text-2xl font-bold font-mono text-gold-400" id="modal-total-amount">$3,124.00</span>
-        </div>
-      </div>
-
-      <!-- Donor Identity Mode -->
-      <div class="flex items-center justify-between p-3 rounded-xl bg-obsidian-900 border border-white/5 mb-6 text-xs">
-        <div class="flex items-center gap-2">
-          <i data-lucide="eye-off" class="w-4 h-4 text-slate-400" id="anon-icon"></i>
-          <div>
-            <div class="font-semibold text-white" id="anon-label">Anonymous Benefactor Mode</div>
-            <div class="text-[11px] text-slate-400">Recipient sees: "A Kind Angel"</div>
-          </div>
-        </div>
-        <label class="relative inline-flex items-center cursor-pointer">
-          <input type="checkbox" id="anon-toggle" checked onchange="toggleAnonMode()" class="sr-only peer">
-          <div class="w-9 h-5 bg-obsidian-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-gold-500"></div>
-        </label>
-      </div>
-
-      <!-- Payment Rail Selector Tabs -->
-      <div class="mb-5">
-        <label class="text-xs font-mono text-slate-400 block mb-2 uppercase">Select Payment Rail</label>
-        <div class="grid grid-cols-4 gap-2">
-          <button onclick="selectPayTab('apple-google')" class="pay-tab active py-2.5 px-2 rounded-xl text-xs font-semibold bg-white text-obsidian-950 flex flex-col items-center justify-center gap-1 transition shadow-md" id="tab-apple-google">
-            <div class="flex items-center gap-1 text-[13px] font-bold">
-              <span>Pay</span>
-              <span class="text-slate-400">/</span>
-              <span>GPay</span>
+            <span class="text-xs text-slate-500 block">Total You Will Pay:</span>
+            <div class="text-[11px] font-mono text-blue-700 font-semibold flex items-center gap-1">
+              <i data-lucide="plane-takeoff" class="w-3.5 h-3.5"></i>
+              <span id="modal-miles-earned">Earn ~9,278 Emirates Miles</span>
             </div>
-            <span class="text-[9px] uppercase font-mono opacity-80">1-Click Fast</span>
-          </button>
-          
-          <button onclick="selectPayTab('card')" class="pay-tab py-2.5 px-2 rounded-xl text-xs font-semibold bg-obsidian-900 text-slate-300 hover:text-white border border-white/5 flex flex-col items-center justify-center gap-1 transition" id="tab-card">
-            <i data-lucide="credit-card" class="w-4 h-4 text-slate-300"></i>
-            <span class="text-[10px]">Cards</span>
-          </button>
-
-          <button onclick="selectPayTab('crypto')" class="pay-tab py-2.5 px-2 rounded-xl text-xs font-semibold bg-obsidian-900 text-slate-300 hover:text-white border border-white/5 flex flex-col items-center justify-center gap-1 transition" id="tab-crypto">
-            <i data-lucide="coins" class="w-4 h-4 text-purple-400"></i>
-            <span class="text-[10px]">Crypto / Web3</span>
-          </button>
-
-          <button onclick="selectPayTab('bank')" class="pay-tab py-2.5 px-2 rounded-xl text-xs font-semibold bg-obsidian-900 text-slate-300 hover:text-white border border-white/5 flex flex-col items-center justify-center gap-1 transition" id="tab-bank">
-            <i data-lucide="landmark" class="w-4 h-4 text-blue-400"></i>
-            <span class="text-[10px]">ACH / Wire</span>
-          </button>
+          </div>
+          <span class="text-2xl font-bold font-mono text-slate-900" id="modal-total-amount">$3,092.76</span>
         </div>
+
       </div>
 
-      <!-- TAB 1: APPLE PAY & GOOGLE PAY -->
-      <div id="panel-apple-google" class="space-y-3">
-        <!-- Native Apple Pay Button -->
-        <button onclick="executePayment('Apple Pay')" class="w-full py-4 rounded-xl bg-white hover:bg-slate-100 text-black font-semibold text-base transition flex items-center justify-center gap-2 shadow-lg">
-          <span class="text-xl"></span>
-          <span>Pay with Apple Pay</span>
+      <!-- Payment Method Selection (No Crypto) -->
+      <div class="space-y-3">
+        <label class="text-[11px] font-mono uppercase text-slate-500 font-bold block">Select Payment Rail</label>
+        
+        <!-- Apple Pay Button -->
+        <button onclick="processPayment('Apple Pay')" class="w-full py-3.5 rounded-xl bg-black hover:bg-slate-900 text-white font-semibold text-sm transition flex items-center justify-center gap-2 shadow-sm">
+          <span class="text-lg"></span>
+          <span>Pay with Apple Pay (1-Click Touch/Face ID)</span>
         </button>
 
-        <!-- Native Google Pay Button -->
-        <button onclick="executePayment('Google Pay')" class="w-full py-4 rounded-xl bg-obsidian-900 hover:bg-obsidian-850 text-white border border-white/20 font-semibold text-base transition flex items-center justify-center gap-2">
-          <svg class="w-5 h-5" viewBox="0 0 24 24">
+        <!-- Google Pay Button -->
+        <button onclick="processPayment('Google Pay')" class="w-full py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-semibold text-sm transition flex items-center justify-center gap-2 shadow-sm">
+          <svg class="w-4 h-4" viewBox="0 0 24 24">
             <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
             <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
             <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.98 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
@@ -644,157 +792,64 @@
           <span>Pay with Google Pay</span>
         </button>
 
-        <p class="text-[11px] text-center text-slate-400 font-mono pt-1">
-          Instant biometric authorization • TouchID / FaceID ready
-        </p>
-      </div>
-
-      <!-- TAB 2: CREDIT / DEBIT CARDS -->
-      <div id="panel-card" class="hidden space-y-4">
-        <div class="space-y-3">
-          <div>
-            <label class="text-[11px] font-mono text-slate-400 block mb-1">Card Number</label>
-            <div class="relative">
-              <input type="text" placeholder="4242 •••• •••• 4242" value="4242 •••• •••• 9821" class="w-full bg-obsidian-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white font-mono focus:outline-none focus:border-gold-500">
-              <div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1 text-slate-400">
-                <i data-lucide="credit-card" class="w-4 h-4"></i>
-              </div>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-2 gap-3">
-            <div>
-              <label class="text-[11px] font-mono text-slate-400 block mb-1">Expiry Date</label>
-              <input type="text" placeholder="MM/YY" value="08/29" class="w-full bg-obsidian-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white font-mono focus:outline-none focus:border-gold-500">
-            </div>
-            <div>
-              <label class="text-[11px] font-mono text-slate-400 block mb-1">CVC / CVV</label>
-              <input type="password" placeholder="•••" value="888" class="w-full bg-obsidian-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white font-mono focus:outline-none focus:border-gold-500">
-            </div>
-          </div>
-        </div>
-
-        <button onclick="executePayment('Credit Card')" class="w-full py-4 rounded-xl bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-obsidian-950 font-bold text-sm shadow-glow-gold transition flex items-center justify-center gap-2">
-          <i data-lucide="lock" class="w-4 h-4"></i>
-          <span>Authorize Payment</span>
-        </button>
-      </div>
-
-      <!-- TAB 3: CRYPTO & WEB3 -->
-      <div id="panel-crypto" class="hidden space-y-4">
-        <!-- Crypto Coin Selector -->
-        <div class="grid grid-cols-3 gap-2 text-xs font-mono">
-          <button onclick="setCryptoCurrency('USDC')" class="crypto-btn active py-2 rounded-lg border border-purple-500 bg-purple-500/10 text-purple-300 font-bold flex items-center justify-center gap-1.5" id="c-btn-usdc">
-            <span class="w-2 h-2 rounded-full bg-blue-400"></span>
-            <span>USDC (SOL/ETH)</span>
+        <div class="grid grid-cols-2 gap-3 pt-1">
+          <!-- Credit Card Button -->
+          <button onclick="processPayment('Amex / Visa / Card')" class="py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs flex items-center justify-center gap-2 transition">
+            <i data-lucide="credit-card" class="w-4 h-4 text-slate-600"></i>
+            <span>Cards (Amex/Visa)</span>
           </button>
-          <button onclick="setCryptoCurrency('ETH')" class="crypto-btn py-2 rounded-lg border border-white/10 text-slate-400 hover:text-white flex items-center justify-center gap-1.5" id="c-btn-eth">
-            <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
-            <span>Ethereum</span>
-          </button>
-          <button onclick="setCryptoCurrency('BTC')" class="crypto-btn py-2 rounded-lg border border-white/10 text-slate-400 hover:text-white flex items-center justify-center gap-1.5" id="c-btn-btc">
-            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-            <span>Bitcoin</span>
+
+          <!-- Direct Bank Wire Button -->
+          <button onclick="processPayment('Direct Bank Wire (FedNow/SWIFT)')" class="py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs flex items-center justify-center gap-2 transition">
+            <i data-lucide="landmark" class="w-4 h-4 text-slate-600"></i>
+            <span>Bank Wire / ACH</span>
           </button>
         </div>
-
-        <!-- QR Code & Address Box -->
-        <div class="p-4 bg-obsidian-900 rounded-2xl border border-white/5 flex flex-col items-center text-center space-y-3">
-          <!-- Mock QR Code Graphic -->
-          <div class="w-36 h-36 bg-white p-2 rounded-xl flex items-center justify-center shadow-lg relative">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=0x71C...BPayEscrow" alt="Payment QR" class="w-full h-full object-contain">
-          </div>
-
-          <div class="space-y-1 w-full">
-            <div class="text-[11px] font-mono text-slate-400">Send Exactly:</div>
-            <div class="text-lg font-mono font-bold text-purple-300" id="crypto-exact-amount">3,124.00 USDC</div>
-            
-            <div class="flex items-center gap-2 mt-2 bg-obsidian-950 p-2 rounded-lg border border-white/10">
-              <span class="text-[10px] font-mono text-slate-400 truncate flex-1 text-left" id="crypto-address-text">0x89B4C93F108e64A8D3a288f6B5f09623E5cA4502</span>
-              <button onclick="copyCryptoAddress()" class="px-2.5 py-1 rounded bg-white/10 hover:bg-white/20 text-[10px] font-mono text-white transition flex items-center gap-1">
-                <i data-lucide="copy" class="w-3 h-3"></i>
-                <span id="copy-btn-label">Copy</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- 1-Click Web3 Wallet Connect -->
-        <button onclick="connectWeb3Wallet()" class="w-full py-3.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs shadow-lg transition flex items-center justify-center gap-2">
-          <i data-lucide="wallet" class="w-4 h-4"></i>
-          <span id="web3-btn-label">Connect Phantom / MetaMask & Sign</span>
-        </button>
-      </div>
-
-      <!-- TAB 4: BANK ACH / WIRE -->
-      <div id="panel-bank" class="hidden space-y-4">
-        <div class="p-4 bg-obsidian-900 rounded-2xl border border-white/5 space-y-2 text-xs font-mono">
-          <div class="flex justify-between py-1 border-b border-white/5">
-            <span class="text-slate-400">Routing (ABA):</span>
-            <span class="text-white font-bold">121000358 (JPMorgan Chase)</span>
-          </div>
-          <div class="flex justify-between py-1 border-b border-white/5">
-            <span class="text-slate-400">Beneficiary Account:</span>
-            <span class="text-white font-bold">9834-0192-3849</span>
-          </div>
-          <div class="flex justify-between py-1 border-b border-white/5">
-            <span class="text-slate-400">Reference Memo:</span>
-            <span class="text-gold-400 font-bold" id="bank-memo-code">BPAY-MED-7829</span>
-          </div>
-        </div>
-
-        <button onclick="executePayment('ACH Wire')" class="w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-lg transition flex items-center justify-center gap-2">
-          <i data-lucide="landmark" class="w-4 h-4"></i>
-          <span>Instant Plaid Bank Sign-In</span>
-        </button>
       </div>
 
     </div>
   </div>
 
 
-  <!-- MODAL 2: SUCCESS GRATITUDE & TAX RECEIPT CELEBRATION -->
-  <div id="success-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-obsidian-950/90 backdrop-blur-xl">
-    <div class="glass-panel-gold w-full max-w-lg rounded-3xl p-8 text-center relative border border-gold-500/40 shadow-glow-gold animate-in fade-in zoom-in-95 duration-300">
+  <!-- MODAL 3: SUCCESS GRATITUDE & RECEIPT -->
+  <div id="success-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+    <div class="bg-white w-full max-w-lg rounded-3xl p-8 text-center relative border border-slate-200 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
       
-      <!-- Golden Trophy Sparkle Icon -->
-      <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-gold-500 via-amber-400 to-yellow-200 mx-auto flex items-center justify-center shadow-glow-gold mb-6 animate-bounce">
-        <i data-lucide="heart-handshake" class="w-10 h-10 text-obsidian-950"></i>
+      <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center mb-4">
+        <i data-lucide="check-check" class="w-8 h-8"></i>
       </div>
 
-      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-mono font-semibold mb-3">
-        <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
-        <span>Expense Cleared in Full!</span>
+      <div class="inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-mono font-bold mb-2">
+        <span>Payment Completed • 0% Fee Deducted from Recipient</span>
       </div>
 
-      <h3 class="text-3xl font-serif italic text-white mb-2">
-        A Human Burden Was Just Lifted.
+      <h3 class="text-3xl font-serif italic text-slate-900 mb-2">
+        A Burden Has Been Lifted.
       </h3>
 
-      <p class="text-sm text-slate-300 max-w-md mx-auto mb-6 leading-relaxed" id="success-message">
-        You have successfully cleared Elena's pediatric hospital bill ($2,840.00). The funds have been wired directly to Children's Hospital of Philadelphia. Elena's family will wake up tomorrow debt-free.
+      <p class="text-xs text-slate-600 max-w-md mx-auto mb-6 leading-relaxed" id="success-message">
+        You cleared this need in full. Settlement has been executed directly with the verified institution or supplier.
       </p>
 
-      <!-- Recipient Audio / Note Snippet -->
-      <div class="p-4 rounded-2xl bg-obsidian-950/80 border border-gold-500/20 text-left mb-6 space-y-2">
-        <div class="flex items-center gap-2 text-xs font-mono text-gold-400">
-          <i data-lucide="message-square" class="w-3.5 h-3.5"></i>
-          <span>Personal Gratitude Message:</span>
+      <!-- Airline Points Credited Notification -->
+      <div class="p-3 bg-blue-50 border border-blue-200 rounded-xl mb-6 text-xs text-left flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center flex-shrink-0">
+          <i data-lucide="plane-takeoff" class="w-4 h-4"></i>
         </div>
-        <p class="text-xs text-slate-200 italic" id="success-recipient-quote">
-          "I cannot stop crying. For 8 months this hospital bill kept me awake every single night. Whoever you are, thank you for giving my little daughter her mother's peace back."
-        </p>
+        <div>
+          <span class="font-bold text-blue-900 block" id="success-miles-credited">+9,278 Emirates Skywards Miles Credited</span>
+          <span class="text-[11px] text-blue-700">Loyalty statement updated under your Patron account.</span>
+        </div>
       </div>
 
-      <!-- Action Buttons -->
-      <div class="space-y-3">
-        <button onclick="downloadTaxReceipt()" class="w-full py-3.5 rounded-xl bg-white hover:bg-slate-100 text-obsidian-950 font-bold text-xs flex items-center justify-center gap-2 transition shadow-md">
-          <i data-lucide="download" class="w-4 h-4 text-obsidian-950"></i>
-          <span>Download IRS §2503(e) Tax Receipt (PDF)</span>
+      <div class="space-y-2">
+        <button onclick="downloadReceipt()" class="w-full py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs flex items-center justify-center gap-2 transition">
+          <i data-lucide="download" class="w-4 h-4"></i>
+          <span>Download IRS §2503(e) Direct Clearance Receipt (PDF)</span>
         </button>
 
-        <button onclick="closeSuccessModal()" class="w-full py-3 rounded-xl bg-obsidian-900 border border-white/10 hover:border-white/20 text-slate-300 hover:text-white font-mono text-xs transition">
-          Return to Feed
+        <button onclick="closeSuccessModal()" class="w-full py-2.5 text-xs text-slate-500 hover:text-slate-800 font-mono transition">
+          Close and Return to Feed
         </button>
       </div>
 
@@ -802,676 +857,752 @@
   </div>
 
 
-  <!-- MODAL 3: RECIPIENT SUBMIT EXPENSE (WITH AI OCR & ANTI-FRAUD FORENSIC AUDIT) -->
-  <div id="recipient-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-obsidian-950/85 backdrop-blur-md overflow-y-auto">
-    <div class="glass-panel w-full max-w-2xl rounded-3xl border border-white/10 p-6 sm:p-8 shadow-2xl relative my-8">
+  <!-- MODAL 4: SUBMIT A NEED (WITH VIDEO & INVOICE/CONTRACT UPLOAD) -->
+  <div id="submit-need-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
+    <div class="bg-white w-full max-w-2xl rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-2xl relative my-8">
       
-      <button onclick="closeRecipientModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition">
-        <i data-lucide="x" class="w-5 h-5"></i>
+      <button onclick="closeRecipientNeedModal()" class="absolute top-6 right-6 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition">
+        <i data-lucide="x" class="w-4 h-4"></i>
       </button>
 
-      <div class="mb-6">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-mono mb-2">
-          <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
-          <span>Anti-Fraud Protected Portal</span>
-        </div>
-        <h3 class="text-2xl font-serif italic text-white">Submit an Expense for Benefactor Clearance</h3>
-        <p class="text-xs text-slate-400 mt-1">
-          Every submission is verified against official records before appearing in front of patrons.
+      <div class="mb-5">
+        <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-mono font-bold">
+          100% Free for People in Need
+        </span>
+        <h3 class="text-2xl font-serif italic text-slate-900 mt-2">Submit an Everyday Need or Bill</h3>
+        <p class="text-xs text-slate-500 mt-1">
+          BPay guarantees 0% fee deduction. Patrons cover all transaction & withdrawal fees.
         </p>
       </div>
 
-      <!-- 3-Step Wizard Indicator -->
-      <div class="grid grid-cols-3 gap-2 mb-8 text-xs font-mono">
-        <div class="p-2 rounded-lg bg-gold-500/10 border border-gold-500/30 text-gold-400 text-center font-bold" id="step-tab-1">
-          1. Identity (KYC)
-        </div>
-        <div class="p-2 rounded-lg bg-obsidian-900 border border-white/5 text-slate-400 text-center" id="step-tab-2">
-          2. Document OCR
-        </div>
-        <div class="p-2 rounded-lg bg-obsidian-900 border border-white/5 text-slate-400 text-center" id="step-tab-3">
-          3. Direct Payout
-        </div>
-      </div>
-
-      <!-- STEP 1: IDENTITY KYC FORM -->
-      <div id="step-content-1" class="space-y-4">
+      <form onsubmit="handleNeedSubmission(event)" class="space-y-4">
+        
         <div class="grid grid-cols-2 gap-4">
           <div>
-            <label class="text-[11px] font-mono text-slate-400 block mb-1">Legal Full Name</label>
-            <input type="text" id="recip-name" placeholder="Elena Rostova" class="w-full bg-obsidian-900 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-gold-500">
+            <label class="text-[11px] font-mono text-slate-600 block mb-1">Your Legal Name</label>
+            <input type="text" id="need-name" required placeholder="Elena Rostova" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-slate-900">
           </div>
           <div>
-            <label class="text-[11px] font-mono text-slate-400 block mb-1">Government ID (Passport / State ID)</label>
-            <input type="file" id="recip-id-file" class="w-full text-xs text-slate-400 file:mr-2 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:bg-white/10 file:text-white hover:file:bg-white/20">
+            <label class="text-[11px] font-mono text-slate-600 block mb-1">Exact Amount Needed (USD)</label>
+            <input type="number" id="need-amount" required placeholder="e.g. 450" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-900 font-mono focus:outline-none focus:border-slate-900">
           </div>
         </div>
 
-        <div>
-          <label class="text-[11px] font-mono text-slate-400 block mb-1">Short Backstory (Why this burden matters)</label>
-          <textarea id="recip-story" rows="3" placeholder="Explain your situation with dignity and honesty. Benefactors care about direct impact." class="w-full bg-obsidian-900 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-gold-500"></textarea>
-        </div>
-
-        <button onclick="goToStep(2)" class="w-full py-3.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-obsidian-950 font-bold text-xs shadow-glow-gold transition flex items-center justify-center gap-2">
-          <span>Continue to Document Audit</span>
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </button>
-      </div>
-
-      <!-- STEP 2: EXPENSE & DOCUMENT OCR FORENSICS -->
-      <div id="step-content-2" class="hidden space-y-4">
         <div class="grid grid-cols-2 gap-4">
           <div>
-            <label class="text-[11px] font-mono text-slate-400 block mb-1">Expense Category</label>
-            <select id="recip-category" class="w-full bg-obsidian-900 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-gold-500">
-              <option value="medical">Medical & Hospital Debt</option>
-              <option value="tuition">Tuition / Student Invoice</option>
-              <option value="housing">Rent & Eviction Notice</option>
-              <option value="emergency">Single Parent / Essential Bill</option>
-              <option value="business">Artisan / Small Business Tool</option>
+            <label class="text-[11px] font-mono text-slate-600 block mb-1">Category of Need</label>
+            <select id="need-category" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-slate-900">
+              <option value="medical">Medical & Surgery Bill</option>
+              <option value="tuition">University / School Tuition</option>
+              <option value="rent">Rent Arrears (Tenancy Lease Deed)</option>
+              <option value="groceries">Groceries & Essential Food</option>
+              <option value="children">Children's Clothes & Supplies</option>
+              <option value="home">Home & Utility Repairs</option>
             </select>
           </div>
           <div>
-            <label class="text-[11px] font-mono text-slate-400 block mb-1">Exact Bill Amount (USD)</label>
-            <input type="number" id="recip-amount" placeholder="e.g. 1450" class="w-full bg-obsidian-900 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white font-mono focus:outline-none focus:border-gold-500">
+            <label class="text-[11px] font-mono text-slate-600 block mb-1">Payee / Institution / Landlord</label>
+            <input type="text" id="need-payee" required placeholder="e.g. Oakridge Realty LLC or Local Market" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-slate-900">
           </div>
         </div>
 
         <div>
-          <label class="text-[11px] font-mono text-slate-400 block mb-1">Upload Bill / Invoice / Statement (PDF or Image)</label>
-          <div class="border-2 border-dashed border-white/15 hover:border-gold-500/40 rounded-2xl p-6 text-center cursor-pointer bg-obsidian-900/50 transition">
-            <i data-lucide="file-up" class="w-8 h-8 text-gold-400 mx-auto mb-2"></i>
-            <p class="text-xs text-slate-300 font-medium">Click to upload official bill or drag & drop</p>
-            <p class="text-[10px] text-slate-400 mt-1">Our AI OCR extracts billing invoice #, EIN, and detects altered pixels.</p>
+          <label class="text-[11px] font-mono text-slate-600 block mb-1">Brief Backstory & Circumstances</label>
+          <textarea id="need-story" rows="3" required placeholder="Tell what happened with dignity. High-net-worth benefactors appreciate honesty and direct impact." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-slate-900"></textarea>
+        </div>
+
+        <!-- Document Verification (Invoice / Tenancy Contract / Medical Bill) -->
+        <div>
+          <label class="text-[11px] font-mono text-slate-600 block mb-1">Upload Bill, Tenancy Contract, or Receipt Proof</label>
+          <div class="border-2 border-dashed border-slate-300 hover:border-slate-500 rounded-xl p-4 text-center cursor-pointer bg-slate-50 transition">
+            <i data-lucide="file-up" class="w-6 h-6 text-slate-500 mx-auto mb-1"></i>
+            <span class="text-xs font-semibold text-slate-700">Click to upload official bill, lease deed, or store quote</span>
+            <span class="text-[10px] text-slate-500 block">Our OCR audits invoice #, landlord deed, and vendor legitimacy automatically.</span>
           </div>
         </div>
 
-        <!-- Monetization Upsell: Priority Express Audit -->
-        <div class="p-4 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <i data-lucide="zap" class="w-5 h-5 text-gold-400"></i>
-            <div>
-              <div class="text-xs font-bold text-white">Add Express Spotlight Review ($9.99)</div>
-              <div class="text-[11px] text-slate-400">Audited in 15 mins & pinned to top of billionaire feed</div>
+        <!-- Private Video Appeal Option (For Billionaire Eyes Only) -->
+        <div class="p-4 rounded-xl bg-amber-50 border border-amber-200 space-y-2">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i data-lucide="video" class="w-4 h-4 text-amber-700"></i>
+              <span class="text-xs font-bold text-amber-950">Add 30-Second Video Appeal (Recommended)</span>
             </div>
+            <span class="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-amber-200 text-amber-900 font-bold">Private & Confidential</span>
           </div>
-          <input type="checkbox" id="express-upsell" checked class="w-4 h-4 rounded text-gold-500 focus:ring-gold-400 bg-obsidian-900">
+          <p class="text-[11px] text-amber-800 leading-tight">
+            Requests with a personal video clear <strong>4x faster</strong>. For your privacy and dignity, this video is encrypted and <strong>visible only to verified logged-in Patrons</strong>.
+          </p>
+          <input type="file" accept="video/*" class="w-full text-xs text-slate-600 file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:bg-amber-200 file:text-amber-900 font-mono">
         </div>
 
-        <div class="flex gap-3">
-          <button onclick="goToStep(1)" class="w-1/3 py-3 rounded-xl bg-obsidian-900 border border-white/10 text-xs text-slate-400 hover:text-white font-mono">Back</button>
-          <button onclick="goToStep(3)" class="w-2/3 py-3 rounded-xl bg-gold-500 hover:bg-gold-400 text-obsidian-950 font-bold text-xs shadow-glow-gold flex items-center justify-center gap-2">
-            <span>Verify Biller Details</span>
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </button>
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs shadow-sm transition">
+          Submit Need for Verification & Clearance
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+
+  <!-- MODAL 5: PATRON GUILD (FOUNDERS OFFER $299/MO ON $499/MO) -->
+  <div id="patron-guild-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
+    <div class="bg-white w-full max-w-lg rounded-3xl border border-amber-300 p-6 sm:p-8 shadow-2xl relative my-8">
+      
+      <button onclick="closePatronGuildModal()" class="absolute top-6 right-6 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="text-center mb-6">
+        <div class="w-14 h-14 rounded-2xl bg-amber-500 text-white mx-auto flex items-center justify-center mb-3 shadow-md">
+          <i data-lucide="crown" class="w-7 h-7"></i>
+        </div>
+        <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-mono font-bold">
+          Founding Patron Tier
+        </span>
+        <h3 class="text-3xl font-serif italic text-slate-900 mt-2">The Sovereign Patron Guild</h3>
+        <div class="flex items-center justify-center gap-2 mt-2">
+          <span class="text-sm line-through text-slate-400 font-mono">$499 / month</span>
+          <span class="text-2xl font-extrabold text-slate-900 font-mono">$299 / month</span>
+          <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">Save $2,400/yr</span>
+        </div>
+        <p class="text-xs text-slate-500 mt-1">Introductory launch rate locked in for life for early benefactors.</p>
+      </div>
+
+      <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 mb-6 space-y-2.5 text-xs">
+        <div class="flex items-center gap-2 text-slate-800">
+          <i data-lucide="check" class="w-4 h-4 text-emerald-600 flex-shrink-0"></i>
+          <span><strong>Automated Monthly Clearing:</strong> Allocate e.g. $5,000/mo to auto-clear urgent surgery or tuition bills.</span>
+        </div>
+        <div class="flex items-center gap-2 text-slate-800">
+          <i data-lucide="check" class="w-4 h-4 text-emerald-600 flex-shrink-0"></i>
+          <span><strong>5x Airline Rewards Multiplier:</strong> Priority classification for Emirates & KrisFlyer bonus tiers.</span>
+        </div>
+        <div class="flex items-center gap-2 text-slate-800">
+          <i data-lucide="check" class="w-4 h-4 text-emerald-600 flex-shrink-0"></i>
+          <span><strong>Quarterly CPA Binders:</strong> IRS §2503(e) direct exclusion verification files prepared for your accountants.</span>
+        </div>
+        <div class="flex items-center gap-2 text-slate-800">
+          <i data-lucide="check" class="w-4 h-4 text-emerald-600 flex-shrink-0"></i>
+          <span><strong>Direct Concierge & Private Video Feed:</strong> Full unrestricted access to all confidential video appeals.</span>
         </div>
       </div>
 
-      <!-- STEP 3: DIRECT BILLER SETTLEMENT -->
-      <div id="step-content-3" class="hidden space-y-4">
+      <button onclick="alert('Welcome to the Founding Patron Guild at the $299/mo rate. Your concierge will activate your account immediately.'); closePatronGuildModal();" class="w-full py-3.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs shadow-md transition">
+        Activate Founding Guild Membership ($299 / mo)
+      </button>
+
+      <p class="text-[10px] text-center text-slate-400 font-mono mt-2">
+        Cancel anytime • 100% tax deductible as philanthropic fintech advisory
+      </p>
+
+    </div>
+  </div>
+
+
+  <!-- MODAL 6: REGISTER AN INSTITUTION OR LANDLORD (GLOBAL ONBOARDING) -->
+  <div id="institution-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
+    <div class="bg-white w-full max-w-xl rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-2xl relative my-8">
+      
+      <button onclick="closeInstitutionModal()" class="absolute top-6 right-6 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="mb-5">
+        <div class="flex items-center gap-2 mb-1">
+          <i data-lucide="building-2" class="w-5 h-5 text-emerald-600"></i>
+          <h3 class="text-2xl font-serif italic text-slate-900">Register Global Institution or Landlord</h3>
+        </div>
+        <p class="text-xs text-slate-500">
+          Onboard school bursars, hospital billing offices, or verified residential tenancy deeds for direct electronic settlement.
+        </p>
+      </div>
+
+      <form onsubmit="handleInstitutionRegister(event)" class="space-y-4 text-xs">
         <div>
-          <label class="text-[11px] font-mono text-slate-400 block mb-1">Official Biller / Institution Name</label>
-          <input type="text" id="recip-biller" placeholder="e.g. Johns Hopkins Hospital / Stanford Bursar" class="w-full bg-obsidian-900 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-gold-500">
+          <label class="text-[11px] font-mono text-slate-600 block mb-1">Entity Type</label>
+          <select id="inst-type" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-slate-900">
+            <option value="school">University / College / School Bursar</option>
+            <option value="hospital">Hospital / Medical Clinic / Healthcare Provider</option>
+            <option value="landlord">Landlord / Property Manager (Residential Lease Deed)</option>
+            <option value="utility">Utility Company / Essential Municipal Provider</option>
+          </select>
         </div>
 
         <div class="grid grid-cols-2 gap-4">
           <div>
-            <label class="text-[11px] font-mono text-slate-400 block mb-1">Account / Invoice Number</label>
-            <input type="text" id="recip-account-no" placeholder="INV-2026-9901" class="w-full bg-obsidian-900 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white font-mono focus:outline-none focus:border-gold-500">
+            <label class="text-[11px] font-mono text-slate-600 block mb-1">Legal Entity / Landlord Name</label>
+            <input type="text" id="inst-name" required placeholder="e.g. Stanford University Bursar" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-slate-900">
           </div>
           <div>
-            <label class="text-[11px] font-mono text-slate-400 block mb-1">Biller Direct Payment Portal URL</label>
-            <input type="text" id="recip-portal-url" placeholder="https://billing.hospital.org" class="w-full bg-obsidian-900 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white font-mono focus:outline-none focus:border-gold-500">
+            <label class="text-[11px] font-mono text-slate-600 block mb-1">Country / Jurisdiction</label>
+            <input type="text" id="inst-country" required placeholder="e.g. United States, UK, Australia" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-slate-900">
           </div>
         </div>
 
-        <div class="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-xs text-slate-300 flex items-start gap-2">
-          <i data-lucide="shield-alert" class="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0"></i>
-          <span>Direct Payment Guarantee: BPay clears the bill directly with the vendor whenever possible. This completely prevents scamming and ensures 100% tax deductibility for patrons.</span>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="text-[11px] font-mono text-slate-600 block mb-1">Bank Routing / SWIFT / BSB Code</label>
+            <input type="text" id="inst-routing" required placeholder="SWIFT or Routing Number" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-900 font-mono focus:outline-none focus:border-slate-900">
+          </div>
+          <div>
+            <label class="text-[11px] font-mono text-slate-600 block mb-1">Bank Account / IBAN</label>
+            <input type="text" id="inst-account" required placeholder="Account or IBAN Number" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-900 font-mono focus:outline-none focus:border-slate-900">
+          </div>
         </div>
 
-        <div class="flex gap-3">
-          <button onclick="goToStep(2)" class="w-1/3 py-3 rounded-xl bg-obsidian-900 border border-white/10 text-xs text-slate-400 hover:text-white font-mono">Back</button>
-          <button onclick="submitRecipientExpense()" class="w-2/3 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-obsidian-950 font-bold text-xs shadow-glow-emerald flex items-center justify-center gap-2">
-            <i data-lucide="check" class="w-4 h-4"></i>
-            <span>Submit for Forensic Audit</span>
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-
-  <!-- MODAL 4: DUAL-SIDED VERIFICATION EXPLAINER (SECURITY & ANTI-FRAUD) -->
-  <div id="verification-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-obsidian-950/85 backdrop-blur-md overflow-y-auto">
-    <div class="glass-panel w-full max-w-2xl rounded-3xl border border-white/10 p-6 sm:p-8 shadow-2xl relative my-8">
-      <button onclick="closeVerificationModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition">
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
-
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-          <i data-lucide="shield-check" class="w-5 h-5"></i>
-        </div>
         <div>
-          <h3 class="text-2xl font-serif italic text-white">Dual-Sided Anti-Fraud Protocol</h3>
-          <p class="text-xs text-slate-400">Why fraudulent activity is virtually impossible on BPay</p>
-        </div>
-      </div>
-
-      <div class="space-y-6 pt-2">
-        <!-- Recipient Side -->
-        <div class="p-5 bg-obsidian-900 rounded-2xl border border-white/5 space-y-3">
-          <div class="flex items-center gap-2 text-emerald-400 font-bold text-xs uppercase font-mono">
-            <i data-lucide="user-check" class="w-4 h-4"></i>
-            <span>Recipient Verification Layers</span>
-          </div>
-          <ul class="text-xs text-slate-300 space-y-2 list-disc list-inside">
-            <li><strong>Govt ID + Biometric Liveness:</strong> Passport or Driver's license scanned with 3D facial mesh to prevent duplicate and fake profiles.</li>
-            <li><strong>AI OCR Forensic Bill Audit:</strong> We extract invoice numbers, tax EINs, dates, and cross-reference them with national biller databases. Tampered PDF pixels trigger auto-rejection.</li>
-            <li><strong>Direct-to-Biller Clearing:</strong> Whenever possible, BPay wires payment straight to the hospital, university, or landlord escrow account. The recipient never receives divertible cash.</li>
-          </ul>
+          <label class="text-[11px] font-mono text-slate-600 block mb-1">Official Verification Proof (Lease Deed, Tax ID, or Accreditation)</label>
+          <input type="file" class="w-full text-xs text-slate-600 file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:bg-slate-200 file:text-slate-800">
         </div>
 
-        <!-- Benefactor Side -->
-        <div class="p-5 bg-obsidian-900 rounded-2xl border border-white/5 space-y-3">
-          <div class="flex items-center gap-2 text-gold-400 font-bold text-xs uppercase font-mono">
-            <i data-lucide="award" class="w-4 h-4"></i>
-            <span>Benefactor & Wealth Verification</span>
-          </div>
-          <ul class="text-xs text-slate-300 space-y-2 list-disc list-inside">
-            <li><strong>Zero-Knowledge Wealth Badging:</strong> Patrons can verify high-tier status via Plaid bank accreditation or on-chain wallet balances without exposing their real identity.</li>
-            <li><strong>Anti-Money Laundering (AML) Filter:</strong> All fiat and crypto deposits are screened through Chainalysis and Stripe Radar to block illicit funds.</li>
-            <li><strong>Total Discretion:</strong> Benefactors can remain 100% anonymous, preventing unsolicited solicitations.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="mt-6 pt-4 border-t border-white/5 text-center">
-        <button onclick="closeVerificationModal()" class="px-6 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-mono text-white transition">
-          Understood
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs shadow-sm transition">
+          Verify and Register Entity
         </button>
-      </div>
-    </div>
-  </div>
+      </form>
 
-
-  <!-- MODAL 5: PATRON GUILD ONBOARDING (BLACK CARD TIER) -->
-  <div id="patron-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-obsidian-950/85 backdrop-blur-md overflow-y-auto">
-    <div class="glass-panel-gold w-full max-w-xl rounded-3xl border border-gold-500/40 p-6 sm:p-8 shadow-glow-gold relative my-8">
-      <button onclick="closePatronModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition">
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
-
-      <div class="text-center mb-6">
-        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-gold-400 to-amber-600 text-obsidian-950 mx-auto flex items-center justify-center shadow-glow-gold mb-3">
-          <i data-lucide="crown" class="w-7 h-7"></i>
-        </div>
-        <h3 class="text-3xl font-serif italic text-white">The Sovereign Patron Guild</h3>
-        <p class="text-xs text-slate-300 max-w-md mx-auto mt-2">
-          Tailored for high-net-worth individuals, family offices, and crypto founders seeking frictionless, high-impact philanthropy.
-        </p>
-      </div>
-
-      <div class="p-5 bg-obsidian-950/90 rounded-2xl border border-gold-500/20 mb-6 space-y-3 text-xs">
-        <div class="flex items-center justify-between pb-2 border-b border-white/5">
-          <span class="text-slate-400">Membership Tier:</span>
-          <span class="font-bold text-gold-400 font-mono">BPay Black Patron ($499 / mo)</span>
-        </div>
-        <div class="flex items-center gap-2 text-slate-300">
-          <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
-          <span>Automated monthly clearing budgets (e.g. $10,000/mo auto-clearing urgent surgery bills)</span>
-        </div>
-        <div class="flex items-center gap-2 text-slate-300">
-          <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
-          <span>Quarterly CPA-ready tax deduction binders under IRS Section 2503(e)</span>
-        </div>
-        <div class="flex items-center gap-2 text-slate-300">
-          <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
-          <span>Dedicated philanthropic concierge & private impact video updates</span>
-        </div>
-      </div>
-
-      <div class="space-y-3">
-        <button onclick="alert('Welcome to the Sovereign Patron Guild. A dedicated concierge will reach out to schedule your private onboarding.')" class="w-full py-4 rounded-xl bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-obsidian-950 font-bold text-sm shadow-glow-gold transition flex items-center justify-center gap-2">
-          <i data-lucide="shield" class="w-4 h-4"></i>
-          <span>Apply for Patron Guild Verification</span>
-        </button>
-
-        <p class="text-[10px] text-center text-slate-400 font-mono">
-          Strict confidentiality • Zero-knowledge identity proofs supported
-        </p>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- MODAL 6: HOW TO DEPLOY LIVE TO THE WORLD (TURNKEY GUIDE) -->
-  <div id="deploy-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-obsidian-950/85 backdrop-blur-md overflow-y-auto">
-    <div class="glass-panel w-full max-w-2xl rounded-3xl border border-white/10 p-6 sm:p-8 shadow-2xl relative my-8">
-      <button onclick="closeDeployModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition">
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
-
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-          <i data-lucide="globe" class="w-5 h-5"></i>
-        </div>
-        <div>
-          <h3 class="text-2xl font-serif italic text-white">How to Launch BPay Live to the World</h3>
-          <p class="text-xs text-slate-400">Step-by-step instructions for 100% live global deployment</p>
-        </div>
-      </div>
-
-      <div class="space-y-4 text-xs text-slate-300 font-mono pt-2">
-        <div class="p-4 bg-obsidian-900 rounded-xl border border-white/5 space-y-2">
-          <div class="text-gold-400 font-bold flex items-center gap-2">
-            <span>Step 1: One-Click Free Global Hosting (Vercel / Netlify / Cloudflare)</span>
-          </div>
-          <p class="text-slate-400 font-sans">
-            Push this folder to a GitHub repository and connect it to <strong>Vercel.com</strong> or <strong>Netlify.com</strong>. It deploys in 30 seconds with automatic HTTPS SSL, global CDN, and zero server management.
-          </p>
-        </div>
-
-        <div class="p-4 bg-obsidian-900 rounded-xl border border-white/5 space-y-2">
-          <div class="text-gold-400 font-bold flex items-center gap-2">
-            <span>Step 2: Connect Your Custom Domain</span>
-          </div>
-          <p class="text-slate-400 font-sans">
-            Register a domain like <code>bpay.love</code>, <code>bpay.foundation</code>, or <code>bpay.org</code> on Namecheap, Cloudflare, or Google Domains. Add the CNAME record to point to Vercel/Netlify.
-          </p>
-        </div>
-
-        <div class="p-4 bg-obsidian-900 rounded-xl border border-white/5 space-y-2">
-          <div class="text-gold-400 font-bold flex items-center gap-2">
-            <span>Step 3: Activate Apple Pay & Google Pay (Stripe)</span>
-          </div>
-          <p class="text-slate-400 font-sans">
-            Create a free Stripe account at <code>stripe.com</code>. In your Stripe Dashboard, go to <strong>Settings → Payment Methods</strong> and enable <strong>Apple Pay</strong> and <strong>Google Pay</strong> with one toggle.
-          </p>
-        </div>
-
-        <div class="p-4 bg-obsidian-900 rounded-xl border border-white/5 space-y-2">
-          <div class="text-gold-400 font-bold flex items-center gap-2">
-            <span>Step 4: Enable Live Crypto Processing</span>
-          </div>
-          <p class="text-slate-400 font-sans">
-            Connect <strong>Coinbase Commerce</strong> or a multisig Gnosis Safe wallet address for automated USDC/USDT stablecoin and ETH/BTC deposits.
-          </p>
-        </div>
-      </div>
-
-      <div class="mt-6 pt-4 border-t border-white/5 flex justify-end">
-        <button onclick="closeDeployModal()" class="px-5 py-2 rounded-xl bg-gold-500 hover:bg-gold-400 text-obsidian-950 font-bold text-xs transition">
-          Got It, Let's Launch
-        </button>
-      </div>
     </div>
   </div>
 
 
   <!-- ========================================================================= -->
-  <!-- JAVASCRIPT STATE & APPLICATION ENGINE -->
+  <!-- JAVASCRIPT STATE ENGINE & DATA -->
   <!-- ========================================================================= -->
   <script>
-    // INITIAL MOCK EXPENSES (HIGH FIDELITY, HUMAN & DIVERSE)
-    let expenses = [
+    // GLOBAL DATABASE OF VERIFIED NEEDS (DIVERSE & HUMAN)
+    let needs = [
       {
-        id: "exp-1",
+        id: "need-1",
         category: "medical",
         categoryLabel: "Medical & Surgery",
         title: "Elena's Pediatric Heart Surgery Arrears",
         recipient: "Elena R. (Mother of Mia, 4)",
+        location: "Philadelphia, USA",
         avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80",
         amount: 2840,
         dueDays: "Due in 3 days",
         urgency: "CRITICAL",
-        billerName: "Children's Hospital of Philadelphia",
+        payee: "Children's Hospital of Philadelphia",
         invoiceNo: "CHOP-2026-8819",
-        riskScore: "99.9% Clean",
-        story: "Mia had an emergency valve replacement. The insurance capped our coverage $2,840 short of the hospital bill. As a single mother working as a preschool assistant, this balance threatens wage garnishment.",
-        verified: true,
-        directPayout: true,
+        riskScore: "100% Clean",
+        hasVideo: true,
+        videoDuration: "0:42",
+        story: "Mia had an emergency valve repair. Insurance capped out $2,840 short. As an assistant teacher, this balance threatens wage garnishment.",
         cleared: false
       },
       {
-        id: "exp-2",
+        id: "need-2",
         category: "tuition",
-        categoryLabel: "Education & Tuition",
+        categoryLabel: "University & School",
         title: "Final Semester BSN Nursing Tuition",
         recipient: "Marcus Vance (Senior Student)",
+        location: "Columbus, USA",
         avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80",
         amount: 3450,
         dueDays: "Due in 5 days",
         urgency: "HIGH",
-        billerName: "Ohio State University Bursar",
+        payee: "Ohio State University Bursar",
         invoiceNo: "OSU-BURSAR-9012",
-        riskScore: "99.8% Clean",
-        story: "First generation college student. I have a 3.9 GPA and already have an ICU nursing job offer lined up, but OSU holds degrees until final account arrears are cleared.",
-        verified: true,
-        directPayout: true,
+        riskScore: "100% Clean",
+        hasVideo: true,
+        videoDuration: "0:35",
+        story: "First generation college student with a 3.9 GPA. I have an ICU hospital contract ready upon graduation, but OSU holds degrees until arrears are cleared.",
         cleared: false
       },
       {
-        id: "exp-3",
-        category: "housing",
-        categoryLabel: "Rent & Eviction Shield",
+        id: "need-3",
+        category: "rent",
+        categoryLabel: "Rent & Tenancy Deeds",
         title: "3 Months Rent Arrears After Layoff",
-        recipient: "Sarah & David Jenkins",
+        recipient: "David & Sarah Jenkins",
+        location: "Manchester, UK",
         avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80",
         amount: 1950,
         dueDays: "Due Tomorrow",
         urgency: "CRITICAL",
-        billerName: "Oakridge Residential Property LLC",
-        invoiceNo: "OAK-LEASE-4412",
-        riskScore: "99.7% Clean",
-        story: "David lost his machining job when the plant closed. He starts his new municipal job in two weeks, but our landlord filed an immediate 7-day cure or quit notice.",
-        verified: true,
-        directPayout: true,
+        payee: "Oakridge Residential Property LLC (Verified Lease)",
+        invoiceNo: "LEASE-UK-4412",
+        riskScore: "99.9% Clean",
+        hasVideo: true,
+        videoDuration: "0:50",
+        story: "David's factory closed unexpectedly. He starts his municipal job next week, but our tenancy contract stipulates immediate eviction notice.",
         cleared: false
       },
       {
-        id: "exp-4",
-        category: "emergency",
-        categoryLabel: "Single Parent & Family",
-        title: "Winter Heating & Insulin Prescription",
-        recipient: "Clara Tremblay (62)",
-        avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=120&q=80",
-        amount: 480,
+        id: "need-4",
+        category: "groceries",
+        categoryLabel: "Groceries & Food Security",
+        title: "Monthly Family Groceries & Formula",
+        recipient: "Fatima & 3 Children",
+        location: "Sydney, Australia",
+        avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&q=80",
+        amount: 380,
         dueDays: "Due Today",
         urgency: "URGENT",
-        billerName: "National Grid Energy & CVS Specialty",
-        invoiceNo: "NG-55819-A",
+        payee: "Direct Supermarket Voucher (Woolworths)",
+        invoiceNo: "GROC-SYD-009",
         riskScore: "100% Clean",
-        story: "My electric utility shut-off notice coincided with my monthly 90-day insulin copay. I had to choose between power or medicine this week.",
-        verified: true,
-        directPayout: true,
+        hasVideo: false,
+        story: "Single mother working night cleaning shifts. Need urgent grocery voucher for baby formula, fresh vegetables, and pantry staples for the children.",
         cleared: false
       },
       {
-        id: "exp-5",
-        category: "business",
-        categoryLabel: "Artisan & Small Venture",
-        title: "Ceramic Studio Kiln Replacement",
-        recipient: "Kaito Tanaka (Ceramist)",
+        id: "need-5",
+        category: "children",
+        categoryLabel: "Children's Essentials",
+        title: "Winter Coats & Specialized Wheelchair Repair",
+        recipient: "Aiden (Father of Leo, 7)",
+        location: "Toronto, Canada",
         avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80",
-        amount: 1650,
-        dueDays: "Due in 10 days",
-        urgency: "MEDIUM",
-        billerName: "Skutt Ceramic Products Inc.",
-        invoiceNo: "SKUTT-88019",
-        riskScore: "99.6% Clean",
-        story: "Our community pottery kiln coil burned out. I teach low-income youth pottery classes in South Chicago on weekends. A replacement element restores full production.",
-        verified: true,
-        directPayout: true,
+        amount: 620,
+        dueDays: "Due in 4 days",
+        urgency: "HIGH",
+        payee: "Ontario Pediatric Mobility Clinic",
+        invoiceNo: "OPM-8821",
+        riskScore: "100% Clean",
+        hasVideo: true,
+        videoDuration: "0:28",
+        story: "Leo's pediatric wheelchair brake caliper snapped. Without this repair, he cannot safely attend his special education class this term.",
         cleared: false
       },
       {
-        id: "exp-6",
-        category: "medical",
-        categoryLabel: "Medical & Surgery",
-        title: "Emergency Dental Abscess Surgery",
-        recipient: "Fatima Al-Mansoor",
-        avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&q=80",
-        amount: 890,
+        id: "need-6",
+        category: "home",
+        categoryLabel: "Home & Emergency Repairs",
+        title: "Burst Winter Pipe & Subfloor Repair",
+        recipient: "Clara Tremblay (68)",
+        location: "Montreal, Canada",
+        avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=120&q=80",
+        amount: 850,
         dueDays: "Due in 2 days",
         urgency: "HIGH",
-        billerName: "Metropolitan Oral Surgery Associates",
-        invoiceNo: "MOSA-7712",
-        riskScore: "99.9% Clean",
-        story: "Severe root infection caused acute facial swelling. Dental insurance only covers $500 per year. The oral surgeon cleared the infection but balance is due.",
-        verified: true,
-        directPayout: true,
+        payee: "Emergency Hydro & Plumbing Corp",
+        invoiceNo: "HYDRO-MTL-771",
+        riskScore: "100% Clean",
+        hasVideo: false,
+        story: "A subzero freeze ruptured the primary intake pipe beneath my floorboards. Water was shut off by the city until licensed repairs are complete.",
+        cleared: false
+      },
+      {
+        id: "need-7",
+        category: "tuition",
+        categoryLabel: "University & School",
+        title: "Secondary School Exam Fees & Textbooks",
+        recipient: "Amara Diallo",
+        location: "Nairobi / Remote",
+        avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=120&q=80",
+        amount: 290,
+        dueDays: "Due in 6 days",
+        urgency: "MEDIUM",
+        payee: "Kenya National Examination Council",
+        invoiceNo: "KNEC-REG-2026",
+        riskScore: "100% Clean",
+        hasVideo: true,
+        videoDuration: "0:30",
+        story: "Top of my STEM class. Need registration fee to sit for national university entrance exams.",
+        cleared: false
+      },
+      {
+        id: "need-8",
+        category: "rent",
+        categoryLabel: "Rent & Tenancy Deeds",
+        title: "Commercial Artisan Workshop Rent",
+        recipient: "Kaito Tanaka (Ceramist)",
+        location: "Kyoto / Chicago",
+        avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&q=80",
+        amount: 1450,
+        dueDays: "Due in 8 days",
+        urgency: "MEDIUM",
+        payee: "Midwest Artisan Studio Co-Op",
+        invoiceNo: "LEASE-COOP-99",
+        riskScore: "99.8% Clean",
+        hasVideo: false,
+        story: "We run weekend free ceramic classes for underprivileged youth. Studio space rent arrears must be settled to keep the youth program active.",
         cleared: false
       }
     ];
 
-    // APPLICATION STATE
+    // CURRENT APP STATE
+    let currentUser = {
+      isLoggedIn: true,
+      role: 'patron', // 'patron' or 'recipient'
+      name: 'Lord Sterling',
+      airline: 'emirates',
+      airlineName: 'Emirates Skywards',
+      totalMilesEarned: 148500,
+      isAnonymous: true
+    };
+
     let currentCategory = 'all';
-    let currentSelectedExpense = null;
-    let selectedTipPercent = 10;
-    let isAnonymous = true;
+    let currentSelectedNeed = null;
+    let selectedTipPercent = 5;
     let currentZenIndex = 0;
-    let totalClearedAmount = 4842910;
-    let totalBurdensCount = 1248;
+    let totalClearedAmount = 5412890;
+    let totalBurdensCount = 1489;
+    let activeAuthRole = 'patron';
 
     // INITIALIZATION
     document.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
-      renderExpenseGrid();
+      updateAuthNav();
+      renderNeedsGrid();
       renderZenCard();
       updateCounts();
+      calculateAirlineMiles();
     });
 
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // SWITCH VIEW TABS (FEED vs ZEN vs MONETIZATION)
+    // UPDATE NAVBAR WITH LOGGED IN / LOGGED OUT USER STATE
+    function updateAuthNav() {
+      const container = document.getElementById('auth-nav-container');
+      if (currentUser.isLoggedIn) {
+        if (currentUser.role === 'patron') {
+          container.innerHTML = `
+            <div class="flex items-center gap-2 bg-white border border-slate-200 px-3 py-1.5 rounded-xl shadow-sm text-xs">
+              <div class="w-6 h-6 rounded-full bg-slate-900 text-amber-400 font-bold flex items-center justify-center text-[11px]">
+                ${currentUser.name.charAt(0)}
+              </div>
+              <div class="hidden sm:block text-left">
+                <div class="font-bold text-slate-900 leading-tight">${currentUser.name}</div>
+                <div class="text-[10px] text-blue-700 font-mono font-semibold">${currentUser.totalMilesEarned.toLocaleString()} ${currentUser.airlineName} Miles</div>
+              </div>
+              <button onclick="toggleUserRole()" title="Switch Account Role" class="text-slate-400 hover:text-slate-800 ml-1">
+                <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          `;
+        } else {
+          container.innerHTML = `
+            <div class="flex items-center gap-2 bg-white border border-slate-200 px-3 py-1.5 rounded-xl shadow-sm text-xs">
+              <div class="w-6 h-6 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-[11px]">
+                ${currentUser.name.charAt(0)}
+              </div>
+              <div class="hidden sm:block text-left">
+                <div class="font-bold text-slate-900 leading-tight">${currentUser.name}</div>
+                <div class="text-[10px] text-emerald-700 font-mono font-semibold">Verified Recipient (0% Fees)</div>
+              </div>
+              <button onclick="toggleUserRole()" title="Switch Account Role" class="text-slate-400 hover:text-slate-800 ml-1">
+                <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          `;
+        }
+      } else {
+        container.innerHTML = `
+          <button onclick="openAuthModal()" class="px-4 py-2 rounded-lg text-xs font-bold bg-slate-900 text-white hover:bg-slate-800 transition">
+            Sign In / Register
+          </button>
+        `;
+      }
+      lucide.createIcons();
+    }
+
+    function toggleUserRole() {
+      if (currentUser.role === 'patron') {
+        currentUser.role = 'recipient';
+        currentUser.name = 'Elena Rostova';
+        alert('Switched to Recipient Profile: Elena Rostova. Notice how video appeals are protected when browsing.');
+      } else {
+        currentUser.role = 'patron';
+        currentUser.name = 'Lord Sterling';
+        alert('Switched to Benefactor Profile: Lord Sterling. Private video requests are unlocked for you!');
+      }
+      updateAuthNav();
+      renderNeedsGrid();
+      renderZenCard();
+    }
+
+    // SWITCH VIEWS
     function switchView(viewName) {
-      const feedView = document.getElementById('view-feed');
-      const zenView = document.getElementById('view-zen');
-      const monetizeView = document.getElementById('view-monetize');
-
-      const btnFeed = document.getElementById('view-feed-btn');
-      const btnZen = document.getElementById('view-zen-btn');
-      const btnMonetize = document.getElementById('view-monetize-btn');
-
-      [feedView, zenView, monetizeView].forEach(v => v.classList.add('hidden'));
-      [btnFeed, btnZen, btnMonetize].forEach(b => {
-        b.className = "px-5 py-2.5 rounded-lg text-xs font-bold transition flex items-center gap-2 text-slate-400 hover:text-white";
+      const views = ['feed', 'zen', 'incentives', 'institutions'];
+      views.forEach(v => {
+        document.getElementById(`view-${v}`).classList.add('hidden');
+        const btn = document.getElementById(`tab-${v}-btn`);
+        btn.className = "px-5 py-2.5 rounded-lg text-xs font-bold transition flex items-center gap-2 text-slate-600 hover:text-slate-900";
       });
 
-      if (viewName === 'feed') {
-        feedView.classList.remove('hidden');
-        btnFeed.className = "px-5 py-2.5 rounded-lg text-xs font-bold transition flex items-center gap-2 bg-gold-500 text-obsidian-950 shadow-glow-gold";
-      } else if (viewName === 'zen') {
-        zenView.classList.remove('hidden');
-        btnZen.className = "px-5 py-2.5 rounded-lg text-xs font-bold transition flex items-center gap-2 bg-gold-500 text-obsidian-950 shadow-glow-gold";
-        renderZenCard();
-      } else if (viewName === 'monetize') {
-        monetizeView.classList.remove('hidden');
-        btnMonetize.className = "px-5 py-2.5 rounded-lg text-xs font-bold transition flex items-center gap-2 bg-gold-500 text-obsidian-950 shadow-glow-gold";
-      }
+      document.getElementById(`view-${viewName}`).classList.remove('hidden');
+      const activeBtn = document.getElementById(`tab-${viewName}-btn`);
+      activeBtn.className = "px-5 py-2.5 rounded-lg text-xs font-bold transition flex items-center gap-2 bg-slate-900 text-white shadow-sm";
 
+      if (viewName === 'zen') {
+        renderZenCard();
+      }
       lucide.createIcons();
     }
 
     // CATEGORY FILTERING
-    function filterCategory(category) {
-      currentCategory = category;
-      document.querySelectorAll('.category-btn').forEach(btn => {
-        btn.classList.remove('active', 'bg-white/10', 'text-white', 'border-white/10');
-        btn.classList.add('text-slate-400', 'border-transparent');
+    function filterCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.category-btn').forEach(b => {
+        b.classList.remove('active', 'bg-slate-900', 'text-white');
+        b.classList.add('text-slate-600', 'hover:bg-slate-100');
       });
-      event.currentTarget.classList.add('active', 'bg-white/10', 'text-white', 'border-white/10');
-      event.currentTarget.classList.remove('text-slate-400', 'border-transparent');
-      renderExpenseGrid();
+      event.currentTarget.classList.add('active', 'bg-slate-900', 'text-white');
+      event.currentTarget.classList.remove('text-slate-600', 'hover:bg-slate-100');
+      renderNeedsGrid();
     }
 
     function updateCounts() {
-      document.getElementById('count-all').innerText = expenses.filter(e => !e.cleared).length;
+      document.getElementById('count-all').innerText = needs.filter(n => !n.cleared).length;
     }
 
-    // RENDER MAIN FEED CARDS
-    function renderExpenseGrid() {
-      const grid = document.getElementById('expense-grid');
-      let filtered = expenses.filter(e => !e.cleared);
+    // RENDER MAIN NEEDS GRID
+    function renderNeedsGrid() {
+      const grid = document.getElementById('needs-grid');
+      let filtered = needs.filter(n => !n.cleared);
 
       if (currentCategory !== 'all') {
-        filtered = filtered.filter(e => e.category === currentCategory);
+        filtered = filtered.filter(n => n.category === currentCategory);
       }
 
       if (filtered.length === 0) {
         grid.innerHTML = `
-          <div class="col-span-full py-16 text-center space-y-3 glass-panel rounded-3xl">
-            <i data-lucide="sparkles" class="w-10 h-10 text-gold-400 mx-auto"></i>
-            <h3 class="text-xl font-serif italic text-white">Every Burden in This Category Is Currently Cleared!</h3>
-            <p class="text-xs text-slate-400">You can submit a new expense or check another category.</p>
+          <div class="col-span-full py-16 text-center space-y-3 bg-white rounded-3xl border border-slate-200">
+            <i data-lucide="check-circle" class="w-12 h-12 text-emerald-500 mx-auto"></i>
+            <h3 class="text-xl font-serif italic text-slate-900">Every burden in this category has been cleared!</h3>
+            <p class="text-xs text-slate-500">Submit a new request or explore other urgent needs.</p>
           </div>
         `;
         lucide.createIcons();
         return;
       }
 
-      grid.innerHTML = filtered.map(item => `
-        <div class="glass-panel rounded-3xl p-6 border border-white/5 hover:border-gold-500/30 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 hover:shadow-glow-gold">
-          
-          <div>
-            <!-- Header Badges -->
-            <div class="flex items-center justify-between gap-2 mb-4">
-              <span class="text-[10px] font-mono uppercase font-bold px-2.5 py-1 rounded-full bg-white/5 text-gold-400 border border-gold-500/20">
-                ${item.categoryLabel}
-              </span>
-              <div class="flex items-center gap-1.5 text-[11px] font-mono text-emerald-400">
-                <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
-                <span>${item.riskScore}</span>
+      grid.innerHTML = filtered.map(item => {
+        // Calculate fee added for patron
+        const withdrawalFee = calculateWithdrawalFee(item.amount);
+        const totalWithFee = item.amount + withdrawalFee;
+        const miles = Math.round(totalWithFee * 3);
+
+        return `
+          <div class="bg-white rounded-3xl p-6 border border-slate-200 hover:border-slate-400 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
+            
+            <div>
+              <!-- Header Badges -->
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-[10px] font-mono uppercase font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-800 border border-slate-200">
+                  ${item.categoryLabel}
+                </span>
+
+                <div class="flex items-center gap-1">
+                  ${item.hasVideo ? `
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 font-bold flex items-center gap-1">
+                      <i data-lucide="video" class="w-3 h-3"></i>
+                      <span>Video Appeal (${item.videoDuration})</span>
+                    </span>
+                  ` : ''}
+                  <span class="text-[10px] font-mono text-emerald-700 font-bold flex items-center gap-0.5">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+                    <span>${item.riskScore}</span>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Amount & 0% Fee Guarantee -->
+              <div class="flex items-baseline justify-between mb-2">
+                <div>
+                  <div class="text-3xl font-extrabold font-mono text-slate-900 tracking-tight">
+                    $${item.amount.toLocaleString()}
+                  </div>
+                  <div class="text-[10px] text-emerald-700 font-semibold">
+                    ✓ Recipient receives 100% net ($0 deducted)
+                  </div>
+                </div>
+                <span class="text-xs font-mono font-bold ${item.urgency === 'CRITICAL' ? 'text-rose-600' : 'text-amber-700'}">
+                  ● ${item.dueDays}
+                </span>
+              </div>
+
+              <!-- Title & Recipient -->
+              <h3 class="text-base font-serif italic text-slate-900 mb-2 leading-snug group-hover:text-amber-700 transition">
+                ${item.title}
+              </h3>
+
+              <div class="flex items-center gap-2 mb-3">
+                <img src="${item.avatar}" alt="${item.recipient}" class="w-6 h-6 rounded-full object-cover border border-slate-200">
+                <div class="text-xs text-slate-700 font-medium">${item.recipient} <span class="text-slate-400 font-normal">(${item.location})</span></div>
+              </div>
+
+              <p class="text-xs text-slate-600 line-clamp-3 mb-4 leading-relaxed">
+                "${item.story}"
+              </p>
+
+              <!-- Direct Settlement Payee -->
+              <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 mb-4 text-[11px] font-mono text-slate-700 flex items-center justify-between">
+                <span class="text-slate-500">Direct Payee:</span>
+                <span class="font-bold text-slate-900 truncate max-w-[170px]" title="${item.payee}">${item.payee}</span>
               </div>
             </div>
 
-            <!-- Amount & Urgency Strip -->
-            <div class="flex items-baseline justify-between mb-3">
-              <div class="text-3xl font-bold font-mono text-white tracking-tight">
-                $${item.amount.toLocaleString()}
+            <!-- Bottom Action & Incentives Strip -->
+            <div class="space-y-2 pt-2 border-t border-slate-100">
+              
+              <div class="flex items-center justify-between text-[11px] font-mono text-blue-700 font-semibold px-1">
+                <span>Total: $${totalWithFee.toFixed(2)} (fee incl.)</span>
+                <span>+${miles.toLocaleString()} Miles</span>
               </div>
-              <span class="text-[11px] font-mono font-semibold ${item.urgency === 'CRITICAL' ? 'text-rose-400' : 'text-amber-400'}">
-                ● ${item.dueDays}
-              </span>
+
+              <button onclick="openCheckoutModal('${item.id}')" class="w-full py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs shadow-sm transition flex items-center justify-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+                <span>Clear This Burden</span>
+              </button>
+
+              <div class="flex items-center justify-center gap-2 text-[10px] text-slate-400 font-mono">
+                <span>Pay</span> • <span>Google Pay</span> • <span>Amex/Visa</span> • <span>Bank Wire</span>
+              </div>
             </div>
 
-            <!-- Title & Recipient -->
-            <h3 class="text-lg font-serif italic text-white mb-2 leading-snug group-hover:text-gold-300 transition">
-              ${item.title}
-            </h3>
-
-            <div class="flex items-center gap-2.5 mb-3">
-              <img src="${item.avatar}" alt="${item.recipient}" class="w-6 h-6 rounded-full object-cover border border-white/20">
-              <span class="text-xs text-slate-300 font-medium">${item.recipient}</span>
-            </div>
-
-            <p class="text-xs text-slate-400 line-clamp-3 mb-4 leading-relaxed">
-              "${item.story}"
-            </p>
-
-            <!-- Direct Biller Lock -->
-            <div class="p-2.5 rounded-xl bg-obsidian-950/70 border border-white/5 mb-5 text-[11px] font-mono text-slate-300 flex items-center justify-between">
-              <span class="text-slate-400">Direct Biller:</span>
-              <span class="font-semibold text-white truncate max-w-[170px]" title="${item.billerName}">${item.billerName}</span>
-            </div>
           </div>
-
-          <!-- Bottom Action Buttons -->
-          <div class="space-y-2">
-            <button onclick="openCheckoutModal('${item.id}')" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-obsidian-950 font-bold text-xs shadow-glow-gold transition flex items-center justify-center gap-2">
-              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-              <span>Clear This Burden ($${item.amount.toLocaleString()})</span>
-            </button>
-
-            <div class="flex items-center justify-center gap-3 text-[10px] text-slate-400 font-mono">
-              <span>Pay</span> • <span>GPay</span> • <span>Card</span> • <span>USDC</span> • <span>ACH</span>
-            </div>
-          </div>
-
-        </div>
-      `).join('');
+        `;
+      }).join('');
 
       lucide.createIcons();
+    }
+
+    // CALCULATE AUTOMATIC WITHDRAWAL & PROCESSING FEE
+    function calculateWithdrawalFee(baseAmount) {
+      // 3.9% + $0.30 standard gateway & instant settlement coverage
+      return Math.round(((baseAmount * 0.039) + 0.30) * 100) / 100;
     }
 
     // RENDER ZEN CARD
     function renderZenCard() {
       const container = document.getElementById('zen-card-container');
-      const activeExpenses = expenses.filter(e => !e.cleared);
+      const active = needs.filter(n => !n.cleared);
 
-      if (activeExpenses.length === 0) {
+      if (active.length === 0) {
         container.innerHTML = `
-          <div class="glass-panel rounded-3xl p-12 text-center space-y-4">
-            <i data-lucide="award" class="w-12 h-12 text-gold-400 mx-auto"></i>
-            <h3 class="text-2xl font-serif italic text-white">All Active Burdens Cleared!</h3>
-            <p class="text-xs text-slate-400">You have lifted every burden in the queue.</p>
+          <div class="bg-white rounded-3xl p-12 text-center border border-slate-200 shadow-sm space-y-3">
+            <i data-lucide="award" class="w-12 h-12 text-amber-500 mx-auto"></i>
+            <h3 class="text-2xl font-serif italic text-slate-900">All Active Needs Cleared!</h3>
+            <p class="text-xs text-slate-500">Every single family in the queue has been granted relief.</p>
           </div>
         `;
         lucide.createIcons();
         return;
       }
 
-      if (currentZenIndex >= activeExpenses.length) {
-        currentZenIndex = 0;
-      }
-
-      const item = activeExpenses[currentZenIndex];
+      if (currentZenIndex >= active.length) currentZenIndex = 0;
+      const item = active[currentZenIndex];
+      const fee = calculateWithdrawalFee(item.amount);
+      const total = item.amount + fee;
+      const miles = Math.round(total * 3);
 
       container.innerHTML = `
-        <div class="glass-panel-gold rounded-3xl p-8 border border-gold-500/30 shadow-glow-gold space-y-6 transition-all duration-300 animate-in fade-in slide-in-from-bottom-4">
+        <div class="bg-white rounded-3xl p-8 border border-slate-300 shadow-luxury space-y-5">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-gold-500/10 text-gold-400 border border-gold-500/30">
+            <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-900 border border-slate-200">
               ${item.categoryLabel}
             </span>
-            <span class="text-xs font-mono text-emerald-400 flex items-center gap-1">
-              <i data-lucide="shield-check" class="w-4 h-4"></i>
+            <span class="text-xs font-mono text-emerald-700 font-bold flex items-center gap-1">
+              <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
               <span>Forensic Verified: ${item.riskScore}</span>
             </span>
           </div>
 
           <div class="text-center py-2">
-            <div class="text-5xl font-mono font-bold text-white mb-2">$${item.amount.toLocaleString()}</div>
-            <div class="text-xs text-rose-400 font-mono">● ${item.dueDays} (Invoice #${item.invoiceNo})</div>
+            <div class="text-5xl font-mono font-extrabold text-slate-900">$${item.amount.toLocaleString()}</div>
+            <div class="text-xs text-emerald-700 font-semibold mt-1">100% Net Guarantee: Recipient receives full $${item.amount.toLocaleString()}</div>
           </div>
 
-          <div class="space-y-3">
-            <h3 class="text-2xl font-serif italic text-white text-center">${item.title}</h3>
-            <p class="text-sm text-slate-300 leading-relaxed text-center italic">
+          <div class="space-y-2 text-center">
+            <h3 class="text-2xl font-serif italic text-slate-900">${item.title}</h3>
+            <p class="text-sm text-slate-600 italic max-w-md mx-auto">
               "${item.story}"
             </p>
           </div>
 
-          <div class="p-4 rounded-2xl bg-obsidian-950/80 border border-white/5 space-y-1 text-xs font-mono">
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1 text-xs font-mono">
             <div class="flex justify-between">
-              <span class="text-slate-400">Recipient:</span>
-              <span class="text-white font-bold">${item.recipient}</span>
+              <span class="text-slate-500">Recipient:</span>
+              <span class="font-bold text-slate-900">${item.recipient} (${item.location})</span>
             </div>
             <div class="flex justify-between">
-              <span class="text-slate-400">Direct Payee:</span>
-              <span class="text-gold-400 font-bold">${item.billerName}</span>
+              <span class="text-slate-500">Payee:</span>
+              <span class="font-bold text-slate-900">${item.payee}</span>
+            </div>
+            <div class="flex justify-between pt-1 border-t border-slate-200 text-blue-700 font-bold">
+              <span>Your Rewards on Clearance:</span>
+              <span>+${miles.toLocaleString()} Airline Miles</span>
             </div>
           </div>
         </div>
       `;
-
       lucide.createIcons();
     }
 
     function nextZenCard() {
-      const activeExpenses = expenses.filter(e => !e.cleared);
-      if (activeExpenses.length > 0) {
-        currentZenIndex = (currentZenIndex + 1) % activeExpenses.length;
+      const active = needs.filter(n => !n.cleared);
+      if (active.length > 0) {
+        currentZenIndex = (currentZenIndex + 1) % active.length;
         renderZenCard();
       }
     }
 
     function clearCurrentZenCard() {
-      const activeExpenses = expenses.filter(e => !e.cleared);
-      if (activeExpenses.length > 0) {
-        openCheckoutModal(activeExpenses[currentZenIndex].id);
+      const active = needs.filter(n => !n.cleared);
+      if (active.length > 0) {
+        openCheckoutModal(active[currentZenIndex].id);
       }
     }
 
-    // CHECKOUT MODAL LOGIC
+    // CHECKOUT MODAL LOGIC (FEE ADDED AUTOMATICALLY)
     function openCheckoutModal(id) {
-      const item = expenses.find(e => e.id === id);
+      const item = needs.find(n => n.id === id);
       if (!item) return;
 
-      currentSelectedExpense = item;
+      currentSelectedNeed = item;
 
       document.getElementById('modal-title').innerText = item.title;
-      document.getElementById('modal-biller').innerText = item.billerName;
+      document.getElementById('modal-biller').innerText = item.payee;
       document.getElementById('modal-category-badge').innerText = item.categoryLabel;
       document.getElementById('modal-base-amount').innerText = `$${item.amount.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
-      document.getElementById('bank-memo-code').innerText = `BPAY-${item.category.toUpperCase().slice(0, 3)}-${item.invoiceNo.slice(-4)}`;
+
+      // Setup Video Preview with Privacy Logic
+      const videoArea = document.getElementById('video-display-area');
+      const badge = document.getElementById('video-access-badge');
+
+      if (item.hasVideo) {
+        if (currentUser.isLoggedIn && currentUser.role === 'patron') {
+          badge.className = "text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold";
+          badge.innerText = "✓ Unlocked for Verified Patron";
+          videoArea.innerHTML = `
+            <div class="w-full h-full flex flex-col items-center justify-center space-y-2">
+              <div class="w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center cursor-pointer transition">
+                <i data-lucide="play" class="w-6 h-6 text-white ml-0.5"></i>
+              </div>
+              <div class="text-xs font-mono text-slate-200">Personal Video Message (${item.videoDuration})</div>
+              <div class="text-[10px] text-slate-400">Recorded by ${item.recipient} • Confidential</div>
+            </div>
+          `;
+        } else {
+          badge.className = "text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-bold";
+          badge.innerText = "🔒 Protected for Recipient Dignity";
+          videoArea.innerHTML = `
+            <div class="space-y-2">
+              <i data-lucide="lock" class="w-6 h-6 text-amber-400 mx-auto"></i>
+              <div class="text-xs font-bold text-white">Video Appeal Locked</div>
+              <div class="text-[11px] text-slate-300 max-w-xs">
+                To protect the recipient's dignity, personal video requests are visible exclusively to verified logged-in Patrons.
+              </div>
+            </div>
+          `;
+        }
+      } else {
+        badge.className = "text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-600 font-bold";
+        badge.innerText = "Written Appeal Only";
+        videoArea.innerHTML = `
+          <div class="text-xs text-slate-300 italic">
+            "${item.story}"
+          </div>
+        `;
+      }
 
       calculateTotals();
-
       document.getElementById('checkout-modal').classList.remove('hidden');
       lucide.createIcons();
     }
@@ -1480,155 +1611,73 @@
       document.getElementById('checkout-modal').classList.add('hidden');
     }
 
-    // TIP SELECTION (MONETIZATION)
-    function setTip(percent) {
-      selectedTipPercent = percent;
+    function setTipPercent(p) {
+      selectedTipPercent = p;
       document.querySelectorAll('.tip-btn').forEach(b => {
-        b.classList.remove('active', 'border-gold-500', 'bg-gold-500/10', 'text-gold-400', 'font-bold');
-        b.classList.add('border-white/10', 'text-slate-400');
+        b.classList.remove('active', 'border-slate-900', 'bg-slate-900', 'text-white', 'font-bold');
+        b.classList.add('border-slate-300', 'text-slate-600');
       });
-      event.currentTarget.classList.add('active', 'border-gold-500', 'bg-gold-500/10', 'text-gold-400', 'font-bold');
-      event.currentTarget.classList.remove('border-white/10', 'text-slate-400');
+      event.currentTarget.classList.add('active', 'border-slate-900', 'bg-slate-900', 'text-white', 'font-bold');
+      event.currentTarget.classList.remove('border-slate-300', 'text-slate-600');
       calculateTotals();
     }
 
     function calculateTotals() {
-      if (!currentSelectedExpense) return;
-      const base = currentSelectedExpense.amount;
+      if (!currentSelectedNeed) return;
+      const base = currentSelectedNeed.amount;
+      const withdrawalFee = calculateWithdrawalFee(base);
       const tipAmount = (base * selectedTipPercent) / 100;
-      const total = base + tipAmount;
+      const total = base + withdrawalFee + tipAmount;
+      const miles = Math.round(total * 3);
 
-      document.getElementById('modal-tip-display').innerText = `+$${tipAmount.toLocaleString('en-US', { minimumFractionDigits: 2 })} (${selectedTipPercent}%)`;
-      document.getElementById('modal-total-amount').innerText = `$${total.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
-      document.getElementById('crypto-exact-amount').innerText = `${total.toLocaleString('en-US', { minimumFractionDigits: 2 })} USDC`;
+      document.getElementById('modal-fee-amount').innerText = `+$${withdrawalFee.toFixed(2)}`;
+      document.getElementById('modal-tip-display').innerText = `+$${tipAmount.toFixed(2)} (${selectedTipPercent}%)`;
+      document.getElementById('modal-total-amount').innerText = `$${total.toFixed(2)}`;
+      document.getElementById('modal-miles-earned').innerText = `Earn ~${miles.toLocaleString()} ${currentUser.airlineName} Miles`;
     }
 
-    function toggleAnonMode() {
-      const toggle = document.getElementById('anon-toggle');
-      isAnonymous = toggle.checked;
-      const label = document.getElementById('anon-label');
-      const icon = document.getElementById('anon-icon');
-
-      if (isAnonymous) {
-        label.innerText = 'Anonymous Benefactor Mode';
-        icon.setAttribute('data-lucide', 'eye-off');
-      } else {
-        label.innerText = 'Public Patron (Wall of Angels)';
-        icon.setAttribute('data-lucide', 'eye');
-      }
-      lucide.createIcons();
-    }
-
-    // SELECT PAYMENT RAIL TABS
-    function selectPayTab(tabName) {
-      ['apple-google', 'card', 'crypto', 'bank'].forEach(t => {
-        document.getElementById(`panel-${t}`).classList.add('hidden');
-        const tabBtn = document.getElementById(`tab-${t}`);
-        tabBtn.className = "pay-tab py-2.5 px-2 rounded-xl text-xs font-semibold bg-obsidian-900 text-slate-300 hover:text-white border border-white/5 flex flex-col items-center justify-center gap-1 transition";
-      });
-
-      document.getElementById(`panel-${tabName}`).classList.remove('hidden');
-      const activeTab = document.getElementById(`tab-${tabName}`);
-      activeTab.className = "pay-tab active py-2.5 px-2 rounded-xl text-xs font-semibold bg-white text-obsidian-950 flex flex-col items-center justify-center gap-1 transition shadow-md";
-      lucide.createIcons();
-    }
-
-    // CRYPTO TAB CONTROLS
-    function setCryptoCurrency(coin) {
-      document.querySelectorAll('.crypto-btn').forEach(b => {
-        b.classList.remove('active', 'border-purple-500', 'bg-purple-500/10', 'text-purple-300', 'font-bold');
-        b.classList.add('border-white/10', 'text-slate-400');
-      });
-      event.currentTarget.classList.add('active', 'border-purple-500', 'bg-purple-500/10', 'text-purple-300', 'font-bold');
-      
-      const total = currentSelectedExpense ? (currentSelectedExpense.amount * (1 + selectedTipPercent/100)) : 3000;
-      
-      if (coin === 'USDC') {
-        document.getElementById('crypto-exact-amount').innerText = `${total.toFixed(2)} USDC`;
-        document.getElementById('crypto-address-text').innerText = '0x89B4C93F108e64A8D3a288f6B5f09623E5cA4502';
-      } else if (coin === 'ETH') {
-        const ethVal = (total / 3200).toFixed(4);
-        document.getElementById('crypto-exact-amount').innerText = `${ethVal} ETH`;
-        document.getElementById('crypto-address-text').innerText = '0x89B4C93F108e64A8D3a288f6B5f09623E5cA4502';
-      } else if (coin === 'BTC') {
-        const btcVal = (total / 68000).toFixed(6);
-        document.getElementById('crypto-exact-amount').innerText = `${btcVal} BTC`;
-        document.getElementById('crypto-address-text').innerText = 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh';
-      }
-    }
-
-    function copyCryptoAddress() {
-      const text = document.getElementById('crypto-address-text').innerText;
-      navigator.clipboard.writeText(text);
-      document.getElementById('copy-btn-label').innerText = 'Copied!';
-      setTimeout(() => {
-        document.getElementById('copy-btn-label').innerText = 'Copy';
-      }, 2000);
-    }
-
-    function connectWeb3Wallet() {
-      document.getElementById('web3-btn-label').innerText = 'Simulating Web3 Signature...';
-      setTimeout(() => {
-        executePayment('Web3 Crypto Signature (USDC)');
-      }, 900);
-    }
-
-    // EXECUTE PAYMENT WITH HAPPINESS & CELEBRATION EFFECT
-    function executePayment(rail) {
-      if (!currentSelectedExpense) return;
+    // PROCESS PAYMENT (APPLE PAY, GOOGLE PAY, CARDS, WIRE)
+    function processPayment(rail) {
+      if (!currentSelectedNeed) return;
 
       closeCheckoutModal();
 
-      // Mark cleared
-      currentSelectedExpense.cleared = true;
-      totalClearedAmount += currentSelectedExpense.amount;
+      currentSelectedNeed.cleared = true;
+      totalClearedAmount += currentSelectedNeed.amount;
       totalBurdensCount += 1;
 
-      // Update global counters
+      const milesEarned = Math.round((currentSelectedNeed.amount + calculateWithdrawalFee(currentSelectedNeed.amount)) * 3);
+      currentUser.totalMilesEarned += milesEarned;
+
       document.getElementById('global-cleared-amount').innerText = `$${totalClearedAmount.toLocaleString()}`;
       document.getElementById('global-burdens-count').innerText = totalBurdensCount.toLocaleString();
 
-      // Trigger Golden Confetti Explosion
-      triggerConfetti();
+      // Golden Celebration Confetti
+      triggerCelebration();
 
-      // Show Gratitude Success Screen
+      // Show Gratitude Modal
       document.getElementById('success-message').innerHTML = `
-        You have successfully cleared <strong>${currentSelectedExpense.recipient}</strong>'s expense of <strong>$${currentSelectedExpense.amount.toLocaleString()}</strong> using <strong>${rail}</strong>. 
-        Funds are wired directly to <strong>${currentSelectedExpense.billerName}</strong>.
+        You successfully cleared <strong>${currentSelectedNeed.recipient}</strong>'s burden of <strong>$${currentSelectedNeed.amount.toLocaleString()}</strong> using <strong>${rail}</strong>.
+        The exact $${currentSelectedNeed.amount.toLocaleString()} was wired with 0% fee deduction to <strong>${currentSelectedNeed.payee}</strong>.
       `;
-      document.getElementById('success-recipient-quote').innerText = `"${currentSelectedExpense.story}"`;
+      document.getElementById('success-miles-credited').innerText = `+${milesEarned.toLocaleString()} ${currentUser.airlineName} Miles Credited`;
 
       document.getElementById('success-modal').classList.remove('hidden');
 
-      renderExpenseGrid();
+      updateAuthNav();
+      renderNeedsGrid();
       renderZenCard();
       updateCounts();
     }
 
-    function triggerConfetti() {
+    function triggerCelebration() {
       if (typeof confetti === 'function') {
         confetti({
-          particleCount: 120,
+          particleCount: 110,
           spread: 70,
           origin: { y: 0.6 },
-          colors: ['#E5C07B', '#D4AF37', '#10B981', '#FFFFFF']
+          colors: ['#D97706', '#2563EB', '#10B981', '#0F172A']
         });
-        setTimeout(() => {
-          confetti({
-            particleCount: 80,
-            angle: 60,
-            spread: 55,
-            origin: { x: 0 },
-            colors: ['#E5C07B', '#D4AF37', '#10B981']
-          });
-          confetti({
-            particleCount: 80,
-            angle: 120,
-            spread: 55,
-            origin: { x: 1 },
-            colors: ['#E5C07B', '#D4AF37', '#10B981']
-          });
-        }, 300);
       }
     }
 
@@ -1636,162 +1685,222 @@
       document.getElementById('success-modal').classList.add('hidden');
     }
 
-    function downloadTaxReceipt() {
-      const receiptText = `
+    function downloadReceipt() {
+      const receipt = `
 =====================================================
-BPAY PROTOCOL - PHILANTHROPIC EXPENDITURE RECEIPT
+BPAY PROTOCOL - OFFICIAL EXPENDITURE RECEIPT
 IRS Section 2503(e) Direct Medical & Educational Exclusion
 =====================================================
-Receipt ID: BPAY-REC-${Date.now()}
+Receipt ID: BPAY-EX-${Date.now()}
 Date: ${new Date().toLocaleDateString()}
-Patron: ${isAnonymous ? 'Verified Sovereign Patron (Anonymous)' : 'Public Angel'}
+Patron: ${currentUser.name} (${currentUser.isAnonymous ? 'Anonymous Mode' : 'Public Angel'})
+Loyalty Rewards: ${currentUser.airlineName}
 
-Recipient Name: ${currentSelectedExpense.recipient}
-Direct Payee: ${currentSelectedExpense.billerName}
-Invoice Ref: ${currentSelectedExpense.invoiceNo}
+Recipient: ${currentSelectedNeed.recipient} (${currentSelectedNeed.location})
+Direct Verified Payee: ${currentSelectedNeed.payee}
+Invoice / Deed Reference: ${currentSelectedNeed.invoiceNo}
 
-Amount Paid: $${currentSelectedExpense.amount.toFixed(2)}
-Platform Tip: $${((currentSelectedExpense.amount * selectedTipPercent) / 100).toFixed(2)}
-Total Clearance: $${(currentSelectedExpense.amount * (1 + selectedTipPercent/100)).toFixed(2)}
+Principal Need Cleared: $${currentSelectedNeed.amount.toFixed(2)}
+Processing & Withdrawal Coverage: $${calculateWithdrawalFee(currentSelectedNeed.amount).toFixed(2)}
+Platform Tip: $${((currentSelectedNeed.amount * selectedTipPercent)/100).toFixed(2)}
+Total Amount Paid: $${(currentSelectedNeed.amount + calculateWithdrawalFee(currentSelectedNeed.amount) + (currentSelectedNeed.amount * selectedTipPercent)/100).toFixed(2)}
 
-Anti-Fraud Verification: CLEARED (Forensic Score: 99.9%)
-Direct Settlement Wire ID: FEDWIRE-CHK-${Math.floor(10000000 + Math.random() * 90000000)}
-
-*This expenditure qualifies under direct gift tax exclusion as it was 
-settled directly to the educational institution or healthcare provider.*
+Recipient Net Deductions: $0.00 (100% Direct Impact)
+Settlement Channel: Direct Electronic Clearing (0% Cash Diversion)
 =====================================================
 `;
-      const blob = new Blob([receiptText], { type: 'text/plain' });
+      const blob = new Blob([receipt], { type: 'text/plain' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `BPAY-Tax-Receipt-${Date.now()}.txt`;
+      a.download = `BPAY-Clearance-Receipt-${Date.now()}.txt`;
       a.click();
       URL.revokeObjectURL(url);
     }
 
-    // SURPRISE GRANT (RANDOM EXPENSE)
-    function openRandomClearModal() {
-      const active = expenses.filter(e => !e.cleared);
+    // SURPRISE GRANT
+    function triggerSurpriseGrant() {
+      const active = needs.filter(n => !n.cleared);
       if (active.length === 0) {
-        alert('All burdens are currently lifted!');
+        alert('All needs are currently cleared!');
         return;
       }
-      const randomItem = active[Math.floor(Math.random() * active.length)];
-      openCheckoutModal(randomItem.id);
+      const randomNeed = active[Math.floor(Math.random() * active.length)];
+      openCheckoutModal(randomNeed.id);
     }
 
-    // RECIPIENT SUBMISSION WIZARD
-    function openRecipientModal() {
-      document.getElementById('recipient-modal').classList.remove('hidden');
-      goToStep(1);
+    // AUTH MODAL LOGIC
+    function openAuthModal() {
+      document.getElementById('auth-modal').classList.remove('hidden');
       lucide.createIcons();
     }
-
-    function closeRecipientModal() {
-      document.getElementById('recipient-modal').classList.add('hidden');
+    function closeAuthModal() {
+      document.getElementById('auth-modal').classList.add('hidden');
     }
 
-    function goToStep(step) {
-      [1, 2, 3].forEach(s => {
-        document.getElementById(`step-content-${s}`).classList.add('hidden');
-        const tab = document.getElementById(`step-tab-${s}`);
-        tab.className = "p-2 rounded-lg bg-obsidian-900 border border-white/5 text-slate-400 text-center";
-      });
+    function setAuthRole(role) {
+      activeAuthRole = role;
+      const bPatron = document.getElementById('auth-role-patron');
+      const bRecipient = document.getElementById('auth-role-recipient');
+      const patronFields = document.getElementById('patron-extra-fields');
+      const recipFields = document.getElementById('recipient-extra-fields');
 
-      document.getElementById(`step-content-${step}`).classList.remove('hidden');
-      const activeTab = document.getElementById(`step-tab-${step}`);
-      activeTab.className = "p-2 rounded-lg bg-gold-500/10 border border-gold-500/30 text-gold-400 text-center font-bold";
-      lucide.createIcons();
+      if (role === 'patron') {
+        bPatron.className = "py-2.5 rounded-lg bg-white text-slate-900 shadow-sm transition";
+        bRecipient.className = "py-2.5 rounded-lg text-slate-500 hover:text-slate-800 transition";
+        patronFields.classList.remove('hidden');
+        recipFields.classList.add('hidden');
+      } else {
+        bRecipient.className = "py-2.5 rounded-lg bg-white text-slate-900 shadow-sm transition";
+        bPatron.className = "py-2.5 rounded-lg text-slate-500 hover:text-slate-800 transition";
+        patronFields.classList.add('hidden');
+        recipFields.classList.remove('hidden');
+      }
     }
 
-    function submitRecipientExpense() {
-      const name = document.getElementById('recip-name').value || "Maria Santos";
-      const story = document.getElementById('recip-story').value || "Emergency repair of family plumbing leak causing ceiling collapse.";
-      const category = document.getElementById('recip-category').value;
-      const amount = parseFloat(document.getElementById('recip-amount').value) || 750;
-      const biller = document.getElementById('recip-biller').value || "Metro Plumbing Emergency LLC";
-      const invoiceNo = document.getElementById('recip-account-no').value || "INV-99201";
-
-      const categoryLabels = {
-        medical: "Medical & Surgery",
-        tuition: "Education & Tuition",
-        housing: "Rent & Eviction Shield",
-        emergency: "Single Parent & Family",
-        business: "Artisan & Small Venture"
+    function handleAuthSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('auth-name').value;
+      const airline = document.getElementById('auth-airline').value;
+      const airlineNames = {
+        emirates: "Emirates Skywards",
+        krisflyer: "Singapore KrisFlyer",
+        qatar: "Qatar Privilege Club",
+        amex: "Amex MR Points",
+        chase: "Chase UR Points"
       };
 
-      const newExpense = {
-        id: `exp-${Date.now()}`,
+      currentUser = {
+        isLoggedIn: true,
+        role: activeAuthRole,
+        name: name,
+        airline: airline,
+        airlineName: airlineNames[airline] || "Emirates Skywards",
+        totalMilesEarned: activeAuthRole === 'patron' ? 25000 : 0,
+        isAnonymous: document.getElementById('auth-anon-pref').checked
+      };
+
+      closeAuthModal();
+      alert(`Account verified! Welcome to BPAY as a ${activeAuthRole === 'patron' ? 'Verified Patron' : 'Verified Recipient'}.`);
+      updateAuthNav();
+      renderNeedsGrid();
+      renderZenCard();
+    }
+
+    // RECIPIENT SUBMISSION
+    function openRecipientNeedModal() {
+      document.getElementById('submit-need-modal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+    function closeRecipientNeedModal() {
+      document.getElementById('submit-need-modal').classList.add('hidden');
+    }
+
+    function handleNeedSubmission(e) {
+      e.preventDefault();
+      const name = document.getElementById('need-name').value;
+      const amount = parseFloat(document.getElementById('need-amount').value) || 500;
+      const category = document.getElementById('need-category').value;
+      const payee = document.getElementById('need-payee').value;
+      const story = document.getElementById('need-story').value;
+
+      const catLabels = {
+        medical: "Medical & Surgery",
+        tuition: "University & School",
+        rent: "Rent & Tenancy Deeds",
+        groceries: "Groceries & Food Security",
+        children: "Children's Essentials",
+        home: "Home & Emergency Repairs"
+      };
+
+      const newNeed = {
+        id: `need-${Date.now()}`,
         category: category,
-        categoryLabel: categoryLabels[category] || "Urgent Relief",
-        title: `${name.split(' ')[0]}'s Verified ${categoryLabels[category]}`,
-        recipient: `${name} (Verified ID)`,
+        categoryLabel: catLabels[category] || "Everyday Relief",
+        title: `${name.split(' ')[0]}'s Verified ${catLabels[category]}`,
+        recipient: `${name} (Verified)`,
+        location: "Verified Global Resident",
         avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80",
         amount: amount,
-        dueDays: "Due in 4 days",
+        dueDays: "Due in 3 days",
         urgency: "HIGH",
-        billerName: biller,
-        invoiceNo: invoiceNo,
+        payee: payee,
+        invoiceNo: `VERIF-${Date.now().toString().slice(-4)}`,
         riskScore: "100% Audited",
+        hasVideo: true,
+        videoDuration: "0:30",
         story: story,
-        verified: true,
-        directPayout: true,
         cleared: false
       };
 
-      expenses.unshift(newExpense);
-      closeRecipientModal();
-      alert('Forensic OCR Complete! Your expense has been verified and placed on the live feed for patrons.');
-      renderExpenseGrid();
+      needs.unshift(newNeed);
+      closeRecipientNeedModal();
+      alert('Your request has been authenticated! It is now live on the feed with 0% fee deduction.');
+      renderNeedsGrid();
       renderZenCard();
       updateCounts();
     }
 
-    // MODAL HELPERS
+    // PATRON GUILD MODAL ($299 OFFER)
+    function openPatronGuildModal() {
+      document.getElementById('patron-guild-modal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+    function closePatronGuildModal() {
+      document.getElementById('patron-guild-modal').classList.add('hidden');
+    }
+
+    // INSTITUTION REGISTER MODAL
+    function openInstitutionModal() {
+      switchView('institutions');
+    }
+    function openRegisterInstitutionModal() {
+      document.getElementById('institution-modal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+    function closeInstitutionModal() {
+      document.getElementById('institution-modal').classList.add('hidden');
+    }
+    function handleInstitutionRegister(e) {
+      e.preventDefault();
+      const name = document.getElementById('inst-name').value;
+      alert(`Institution "${name}" submitted for international wire routing validation. Verification completes within 24 hours.`);
+      closeInstitutionModal();
+    }
+
+    // AIRLINE MILES CALCULATOR
+    function calculateAirlineMiles() {
+      const amount = parseFloat(document.getElementById('calc-amount').value) || 5000;
+      const annualClearance = amount * 12;
+      const miles = annualClearance * 3;
+      document.getElementById('calc-miles-output').innerText = `${miles.toLocaleString()} Miles`;
+    }
+
+    function openAirlineMilesModal() {
+      switchView('incentives');
+    }
+
     function openVerificationModal() {
-      document.getElementById('verification-modal').classList.remove('hidden');
-      lucide.createIcons();
-    }
-    function closeVerificationModal() {
-      document.getElementById('verification-modal').classList.add('hidden');
-    }
-
-    function openPatronOnboarding() {
-      document.getElementById('patron-modal').classList.remove('hidden');
-      lucide.createIcons();
-    }
-    function closePatronModal() {
-      document.getElementById('patron-modal').classList.add('hidden');
-    }
-
-    function openDeployGuideModal() {
-      document.getElementById('deploy-modal').classList.remove('hidden');
-      lucide.createIcons();
-    }
-    function closeDeployModal() {
-      document.getElementById('deploy-modal').classList.add('hidden');
+      alert("Dual Verification Protocol: Recipient identity is verified via passport/state ID and biometric liveness. Invoices and tenancy deeds are audited by AI OCR. Donors are screened for AML compliance.");
     }
 
     function openLegalModal() {
-      alert("IRS §2503(e) Legal Basis: Direct payments made directly to a medical provider or educational institution are exempt from federal gift tax limits without consuming lifetime unified gift tax exemption. This makes BPay the optimal philanthropic instrument for billionaires.");
-    }
-
-    function openCryptoDocsModal() {
-      alert("Web3 Architecture: BPay uses immutable escrow smart contracts for USDC and USDT settlements on Solana and Ethereum, enabling instant real-time cryptographic auditability of all cleared debts.");
+      alert("IRS §2503(e) Legal Exemption: Direct payments made to medical providers and educational institutions are exempt from federal gift tax caps, allowing high-net-worth patrons to grant unlimited amounts with zero gift tax penalty.");
     }
 
     function sortExpenses() {
-      const sortVal = document.getElementById('sort-selector').value;
-      if (sortVal === 'amount-low') {
-        expenses.sort((a, b) => a.amount - b.amount);
-      } else if (sortVal === 'amount-high') {
-        expenses.sort((a, b) => b.amount - a.amount);
-      } else if (sortVal === 'urgent') {
-        const rank = { 'CRITICAL': 3, 'HIGH': 2, 'URGENT': 2, 'MEDIUM': 1 };
-        expenses.sort((a, b) => (rank[b.urgency] || 0) - (rank[a.urgency] || 0));
+      const val = document.getElementById('sort-selector').value;
+      if (val === 'amount-low') {
+        needs.sort((a, b) => a.amount - b.amount);
+      } else if (val === 'amount-high') {
+        needs.sort((a, b) => b.amount - a.amount);
+      } else if (val === 'video') {
+        needs.sort((a, b) => (b.hasVideo ? 1 : 0) - (a.hasVideo ? 1 : 0));
+      } else if (val === 'urgent') {
+        const order = { 'CRITICAL': 3, 'HIGH': 2, 'URGENT': 2, 'MEDIUM': 1 };
+        needs.sort((a, b) => (order[b.urgency] || 0) - (order[a.urgency] || 0));
       }
-      renderExpenseGrid();
+      renderNeedsGrid();
     }
   </script>
 
