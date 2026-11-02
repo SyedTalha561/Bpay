@@ -4,6 +4,7 @@
   "description": "Sovereign Benefactor Network where ultra-high-net-worth individuals pay verified expenses happily.",
   "main": "index.html",
   "scripts": {
+    "build": "echo 'Build OK'",
     "start": "python3 server.py",
     "dev": "python3 server.py"
   },
@@ -12,8 +13,6 @@
     "philanthropy",
     "apple-pay",
     "google-pay",
-    "crypto",
-    "usdc",
     "anti-fraud"
   ],
   "author": "BPAY Team",
