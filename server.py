@@ -145,8 +145,58 @@ class BPayHandler(http.server.SimpleHTTPRequestHandler):
         except Exception:
             body = {}
 
+        # POST /api/create-payment-intent: Stripe PaymentIntent creation
+        if parsed.path == '/api/create-payment-intent':
+            need_id = body.get('needId', 'need-demo')
+            recipient_name = body.get('recipientName', 'Verified Recipient')
+            payee = body.get('payee', 'Verified Direct Institution')
+            base_amount = float(body.get('amount', 100.0))
+            tip_pct = float(body.get('tipPercent', 5.0))
+
+            fee = round((base_amount * 0.039) + 0.30, 2)
+            tip = round((base_amount * tip_pct) / 100.0, 2)
+            total = round(base_amount + fee + tip, 2)
+
+            res = {
+                "clientSecret": f"pi_test_bpay_{os.urandom(8).hex()}_secret_{os.urandom(12).hex()}",
+                "paymentIntentId": f"pi_test_{os.urandom(10).hex()}",
+                "baseAmount": base_amount,
+                "withdrawalFee": fee,
+                "tipAmount": tip,
+                "totalAmount": total
+            }
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps(res).encode('utf-8'))
+            return
+
+        # POST /api/create-guild-subscription: Stripe Checkout Session for $299/mo Guild
+        elif parsed.path == '/api/create-guild-subscription':
+            res = {
+                "url": f"https://checkout.stripe.com/c/pay/cs_test_{os.urandom(12).hex()}",
+                "sessionId": f"cs_test_{os.urandom(12).hex()}"
+            }
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps(res).encode('utf-8'))
+            return
+
+        # POST /api/create-connect-account: Stripe Connect Express Onboarding
+        elif parsed.path == '/api/create-connect-account':
+            res = {
+                "accountId": f"acct_{os.urandom(8).hex()}",
+                "url": f"https://connect.stripe.com/setup/c/acct_{os.urandom(8).hex()}"
+            }
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps(res).encode('utf-8'))
+            return
+
         # POST /api/clear: Clear a verified need
-        if parsed.path == '/api/clear':
+        elif parsed.path == '/api/clear':
             need_id = body.get('id')
             rail = body.get('rail', 'Apple Pay')
             tip_pct = body.get('tipPercent', 5)

@@ -1,7 +1,13 @@
 [build]
   base = ""
   publish = "."
+  functions = "netlify/functions"
   command = "echo 'Static deploy ready'"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
 
 [[redirects]]
   from = "/*"
